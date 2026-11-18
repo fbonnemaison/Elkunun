@@ -2,7 +2,7 @@
 
 > *Elkünufe* (mapudungun): «el que guarda o deja cosas», del verbo *elkünun* (guardar, dejar).
 
-Juego de rompecabezas 2D y minimalista para macOS. Empuja cada caja hasta su lugar de destino en el almacén, sin quedarte atascado.
+Juego de rompecabezas 2D y minimalista para macOS. Eres un zorro culpeo que guarda sus cosas: empuja cada caja hasta su lugar de destino en el almacén, sin quedarte atascado. Incluye una campaña de 60 niveles, niveles aleatorios infinitos, música y efectos de sonido.
 
 Inspirado en el género de empujar cajas que popularizó Sokoban (Hiroyuki Imabayashi, 1981). Elkünufe es un juego independiente: no está afiliado a Sokoban ni a sus titulares, y todos sus niveles, gráficos y sonidos son originales.
 
@@ -20,6 +20,7 @@ Los niveles se generan por procedimiento, y cada uno tiene solución garantizada
 
 ## Requisitos
 
+- Mac con Apple silicon (M1 o posterior). No hay versión para Mac con Intel.
 - macOS 14 (Sonoma) o posterior.
 
 ## Instalación

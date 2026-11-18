@@ -7,12 +7,17 @@
 
 | Tema | Decisión |
 |---|---|
-| Plataforma | macOS nativo |
-| Tecnología | Swift + SpriteKit (tablero) + SwiftUI (menús), macOS 14+ |
+| Plataforma | macOS nativo, solo Apple silicon (arm64); sin versión Intel |
+| Tecnología | Swift + SpriteKit (tablero) + SwiftUI (menús) |
+| Versión mínima | macOS 14 (Sonoma) |
 | Distribución | Firma ad hoc, sin notarización ni App Store; descarga gratis (GitHub Releases) |
 | Estética | Minimalista plana, inspiración mapuche sutil (paleta de textiles: rojo, negro, blanco, añil; patrones geométricos sencillos). Sin símbolos sagrados (p. ej. kultrún, rewe) |
-| Niveles | Generador procedural con solucionador que garantiza que cada nivel tiene solución |
+| Personaje | Zorro culpeo (*Lycalopex culpaeus*), estilizado y geométrico |
+| Niveles | Generador procedural con solucionador que garantiza que cada nivel tiene solución; campaña de 60 niveles |
+| Audio | Incluido desde la primera versión (efectos y música) |
 | Idiomas | Español + inglés (String Catalog) |
+| Licencia | MIT |
+| Repositorio | GitHub **privado** hasta nuevo aviso |
 | Autor | App-Zilla |
 
 ## Reglas del juego
@@ -42,11 +47,14 @@
 - [x] Pruebas unitarias con Swift Testing (22 pruebas).
 
 ## Etapa 2 — Solucionador
-- [ ] Búsqueda (BFS para niveles pequeños; A* con heurística de distancias caja→destino).
-- [ ] Detección de *deadlocks* simples (esquinas, muros sin destino) para podar la búsqueda.
-- [ ] Tabla de transposición (hash de posición de cajas + región alcanzable del jugador).
-- [ ] Devuelve la solución óptima en empujes y su longitud (sirve para medir dificultad).
-- [ ] Pruebas con niveles pequeños hechos a mano.
+- [x] Búsqueda A* sobre empujes con heurística admisible (suma de empujes mínimos caja→destino).
+- [x] Detección de *deadlocks*: casillas muertas (BFS «tirando» desde los destinos) y bloqueos 2×2.
+- [x] Tabla de transposición (cajas ordenadas + zona alcanzable del jugador).
+- [x] Devuelve la solución óptima en empujes y la secuencia completa de movimientos (LURD).
+- [x] Límite de posiciones y cancelación (para usarlo en segundo plano).
+- [x] Pruebas con niveles hechos a mano; resultados contrastados con una búsqueda por fuerza bruta.
+- Rendimiento medido (Release, Apple silicon): 4 cajas < 1 ms, 6 cajas en sala abierta ≈ 180 ms.
+- [ ] Más adelante, si el generador lo necesita: detección de bloqueos por congelamiento más general y emparejamiento caja–destino en la heurística.
 
 ## Etapa 3 — Generador procedural
 - [ ] Generar la forma de la habitación (plantillas de bloques 3×3 combinadas al azar, conectividad garantizada).
@@ -54,13 +62,14 @@
 - [ ] Validar con el solucionador y descartar niveles triviales.
 - [ ] Métrica de dificultad (empujes mínimos, nº de cajas, cambios de caja, tamaño).
 - [ ] Niveles reproducibles por **semilla** (compartir un nivel = compartir un código).
-- [ ] Modo campaña: secuencia fija de semillas pregeneradas con dificultad creciente.
+- [ ] Modo campaña: 60 niveles (6 grupos de 10) a partir de semillas fijas pregeneradas, con dificultad creciente.
 - [ ] Modo libre: nivel aleatorio eligiendo dificultad (fácil / media / difícil).
 - [ ] Generación en segundo plano para no bloquear la interfaz.
 
 ## Etapa 4 — Gráficos y animación (SpriteKit)
 - [ ] Definir paleta y guía visual (inspiración textil mapuche, formas planas).
-- [ ] Sprites vectoriales/geométricos: suelo, muro, destino, caja, caja en destino, personaje (4 direcciones).
+- [ ] Sprites vectoriales/geométricos: suelo, muro, destino, caja, caja en destino.
+- [ ] Personaje: zorro culpeo geométrico (pelaje rojizo, patas y hocico oscuros, cola con punta negra), en 4 direcciones; animación de reposo, paso y empuje.
 - [ ] Borde decorativo con patrón geométrico sencillo.
 - [ ] Animaciones cortas de paso y empuje; efecto al colocar una caja en su destino y al completar el nivel.
 - [ ] Escalado del tablero según tamaño de ventana; soporte Retina.
@@ -77,9 +86,12 @@
 - [ ] Localización español / inglés con String Catalog.
 - [ ] Accesibilidad: VoiceOver básico, contraste alto, reducción de movimiento.
 
-## Etapa 6 — Audio (opcional)
-- [ ] Efectos simples (paso, empuje, caja en destino, victoria), originales o con licencia CC0.
-- [ ] Música ambiental suave (original o CC0); control de volumen y silencio.
+## Etapa 6 — Audio (incluido en la versión 1.0)
+- [ ] Efectos: paso, empuje, golpe contra muro/bloqueo, caja en destino, deshacer, victoria; originales o con licencia CC0.
+- [ ] Música ambiental suave (original o CC0), en bucle, con posible inspiración en sonoridades andinas sin usar grabaciones ni piezas tradicionales con derechos.
+- [ ] Motor de audio con `AVAudioEngine` (efectos con baja latencia y música en bucle).
+- [ ] Ajustes: volumen de efectos y de música por separado, y silencio total.
+- [ ] Archivo de créditos de audio con la licencia de cada recurso.
 
 ## Etapa 7 — Persistencia
 - [ ] Guardar progreso de campaña, mejores marcas y ajustes (`UserDefaults` / JSON en Application Support).
@@ -117,8 +129,4 @@
 ---
 
 ## Preguntas abiertas
-- ¿Licencia del código: MIT, GPL u otra? (por defecto MIT)
-- ¿Versión mínima de macOS: 14 (Sonoma) está bien?
-- ¿Cuántos niveles en la campaña? (propuesta: 60, en 6 grupos de 10)
-- ¿Incluir audio en la primera versión o dejarlo para después?
-- ¿Diseño del personaje: figura humana estilizada, animal nativo (p. ej. un pudú o un zorro culpeo) o abstracto?
+- Ninguna por ahora.
