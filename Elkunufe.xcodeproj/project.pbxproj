@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		000502EE509E1B371C863EA9 /* ElkunufeCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2D5459EFF952A24BD9BFB6 /* ElkunufeCoreTests.swift */; };
+		166FCB4B9009EBB11A1077A4 /* LevelCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576F66AE3662A37F16E8FF8C /* LevelCode.swift */; };
 		17880258ADAF99EF2D404B5F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E198A65F724290581EF2A5B6 /* Localizable.xcstrings */; };
 		1BFA1D0452FDE14D74048DDF /* ElkunufeCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152D286CCC8F6357EC72EFE7 /* ElkunufeCore.swift */; };
 		1D90B51896C57F87E379BFEC /* SolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE11DE650E5CB8CD713D4DFC /* SolverTests.swift */; };
 		3E94ED61E54957D102FAA9EA /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6D0C6D2491DCE0B671FA5 /* GameState.swift */; };
+		4A52E82D6388C4797A24A102 /* SeededRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3318432030C37EBD6E68CB55 /* SeededRandom.swift */; };
 		4E26380779462E316D34E2F6 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3C3CEE7183BB937BE686E9 /* Palette.swift */; };
 		4FAA28F3B5652BA3C4713BE2 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B684A783C796BCD82E08FAE /* Level.swift */; };
 		577C8F7958D536319A8A51D0 /* ElkunufeCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1BBCE562227770516B1520 /* ElkunufeCore.framework */; };
@@ -20,12 +22,17 @@
 		6B8BA1D3D40970D348731AA2 /* LevelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CF3E8AC929E9FE1421419E /* LevelTests.swift */; };
 		764E99BBA3DE2F09CC3A42D1 /* ElkunufeCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1BBCE562227770516B1520 /* ElkunufeCore.framework */; };
 		7BD6E04A69F7FF3CEF014C2A /* ElkunufeCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1BBCE562227770516B1520 /* ElkunufeCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7DA5FD12A6DFE173618183B7 /* RoomBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A853BAE4FCAD95E0513A6F7 /* RoomBuilder.swift */; };
 		83195B24DAA92A29B8F7C6B6 /* GameStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEC4E7DC7816A91ECF76F8F /* GameStateTests.swift */; };
 		8438FE606A23FB9619EFD274 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451B7CB526B59C5A330935BC /* Geometry.swift */; };
 		881A45011C2BEAB951339B4A /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B9C225069291D6A5351222 /* PriorityQueue.swift */; };
 		8989BA3A6421C5958ED210C9 /* ElkunufeCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1BBCE562227770516B1520 /* ElkunufeCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9698389AC2821EC19153492B /* Campaign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F1C588695E6A599D74B5B9 /* Campaign.swift */; };
+		B03CF27B382686A496281EAA /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7E66BF4B9E58B23362ECBE /* Generator.swift */; };
+		BCB704B5E80F98B4ABBA8BE0 /* CampaignLevels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7F4FCEF4FEF5E85620678 /* CampaignLevels.swift */; };
 		C2287C60FB74A36866BF3CA7 /* Solver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6157E5970B18643AF99BE7FD /* Solver.swift */; };
 		E047089FF273AEEBF53D0CDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D7361E9C2E6E6173A721934 /* Assets.xcassets */; };
+		E8BEF928E6B9A8CA7E8B57B2 /* GeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CBBA52E2DC209CB35A47EA /* GeneratorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,16 +83,23 @@
 		184ECFDE581426F442C9D07F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2B3C3CEE7183BB937BE686E9 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		2E1BBCE562227770516B1520 /* ElkunufeCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ElkunufeCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3318432030C37EBD6E68CB55 /* SeededRandom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeededRandom.swift; sourceTree = "<group>"; };
 		451B7CB526B59C5A330935BC /* Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
 		4525D8346C349E7A040245B4 /* ElkunufeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElkunufeApp.swift; sourceTree = "<group>"; };
 		4B684A783C796BCD82E08FAE /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		516D0996B5B3E5B99682F607 /* Elkunufe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Elkunufe.entitlements; sourceTree = "<group>"; };
+		576F66AE3662A37F16E8FF8C /* LevelCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCode.swift; sourceTree = "<group>"; };
 		6157E5970B18643AF99BE7FD /* Solver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solver.swift; sourceTree = "<group>"; };
 		6A53F878054A69ED8C2ECDD8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6A853BAE4FCAD95E0513A6F7 /* RoomBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomBuilder.swift; sourceTree = "<group>"; };
 		6C79EA9B0CB7451E83475250 /* ElkunufeCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElkunufeCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		82B6D0C6D2491DCE0B671FA5 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		8D7361E9C2E6E6173A721934 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93B9C225069291D6A5351222 /* PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
+		95F1C588695E6A599D74B5B9 /* Campaign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campaign.swift; sourceTree = "<group>"; };
+		9D7E66BF4B9E58B23362ECBE /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
+		A0CBBA52E2DC209CB35A47EA /* GeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorTests.swift; sourceTree = "<group>"; };
+		AAF7F4FCEF4FEF5E85620678 /* CampaignLevels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignLevels.swift; sourceTree = "<group>"; };
 		AE11DE650E5CB8CD713D4DFC /* SolverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolverTests.swift; sourceTree = "<group>"; };
 		D9DEA118245A89E55FE053DF /* Elkunufe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Elkunufe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E198A65F724290581EF2A5B6 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -116,11 +130,17 @@
 		10FF65BF3A8C8C134819FFEA /* ElkunufeCore */ = {
 			isa = PBXGroup;
 			children = (
+				95F1C588695E6A599D74B5B9 /* Campaign.swift */,
+				AAF7F4FCEF4FEF5E85620678 /* CampaignLevels.swift */,
 				152D286CCC8F6357EC72EFE7 /* ElkunufeCore.swift */,
 				82B6D0C6D2491DCE0B671FA5 /* GameState.swift */,
+				9D7E66BF4B9E58B23362ECBE /* Generator.swift */,
 				451B7CB526B59C5A330935BC /* Geometry.swift */,
 				4B684A783C796BCD82E08FAE /* Level.swift */,
+				576F66AE3662A37F16E8FF8C /* LevelCode.swift */,
 				93B9C225069291D6A5351222 /* PriorityQueue.swift */,
+				6A853BAE4FCAD95E0513A6F7 /* RoomBuilder.swift */,
+				3318432030C37EBD6E68CB55 /* SeededRandom.swift */,
 				6157E5970B18643AF99BE7FD /* Solver.swift */,
 			);
 			path = ElkunufeCore;
@@ -148,6 +168,7 @@
 			children = (
 				0E2D5459EFF952A24BD9BFB6 /* ElkunufeCoreTests.swift */,
 				FAEC4E7DC7816A91ECF76F8F /* GameStateTests.swift */,
+				A0CBBA52E2DC209CB35A47EA /* GeneratorTests.swift */,
 				F1CF3E8AC929E9FE1421419E /* LevelTests.swift */,
 				AE11DE650E5CB8CD713D4DFC /* SolverTests.swift */,
 			);
@@ -322,6 +343,7 @@
 			files = (
 				000502EE509E1B371C863EA9 /* ElkunufeCoreTests.swift in Sources */,
 				83195B24DAA92A29B8F7C6B6 /* GameStateTests.swift in Sources */,
+				E8BEF928E6B9A8CA7E8B57B2 /* GeneratorTests.swift in Sources */,
 				6B8BA1D3D40970D348731AA2 /* LevelTests.swift in Sources */,
 				1D90B51896C57F87E379BFEC /* SolverTests.swift in Sources */,
 			);
@@ -331,11 +353,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9698389AC2821EC19153492B /* Campaign.swift in Sources */,
+				BCB704B5E80F98B4ABBA8BE0 /* CampaignLevels.swift in Sources */,
 				1BFA1D0452FDE14D74048DDF /* ElkunufeCore.swift in Sources */,
 				3E94ED61E54957D102FAA9EA /* GameState.swift in Sources */,
+				B03CF27B382686A496281EAA /* Generator.swift in Sources */,
 				8438FE606A23FB9619EFD274 /* Geometry.swift in Sources */,
 				4FAA28F3B5652BA3C4713BE2 /* Level.swift in Sources */,
+				166FCB4B9009EBB11A1077A4 /* LevelCode.swift in Sources */,
 				881A45011C2BEAB951339B4A /* PriorityQueue.swift in Sources */,
+				7DA5FD12A6DFE173618183B7 /* RoomBuilder.swift in Sources */,
+				4A52E82D6388C4797A24A102 /* SeededRandom.swift in Sources */,
 				C2287C60FB74A36866BF3CA7 /* Solver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

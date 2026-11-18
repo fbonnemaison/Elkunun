@@ -57,14 +57,16 @@
 - [ ] Más adelante, si el generador lo necesita: detección de bloqueos por congelamiento más general y emparejamiento caja–destino en la heurística.
 
 ## Etapa 3 — Generador procedural
-- [ ] Generar la forma de la habitación (plantillas de bloques 3×3 combinadas al azar, conectividad garantizada).
-- [ ] Colocar destinos y cajas; obtener posiciones iniciales jugando «hacia atrás» (tirando cajas desde los destinos) para garantizar solución.
-- [ ] Validar con el solucionador y descartar niveles triviales.
-- [ ] Métrica de dificultad (empujes mínimos, nº de cajas, cambios de caja, tamaño).
-- [ ] Niveles reproducibles por **semilla** (compartir un nivel = compartir un código).
-- [ ] Modo campaña: 60 niveles (6 grupos de 10) a partir de semillas fijas pregeneradas, con dificultad creciente.
-- [ ] Modo libre: nivel aleatorio eligiendo dificultad (fácil / media / difícil).
-- [ ] Generación en segundo plano para no bloquear la interfaz.
+- [x] Forma de la habitación con plantillas propias de 3×3 (rotadas y reflejadas), sin callejones, conectada, sin zonas abiertas de 3×4 y recortada.
+- [x] Colocar destinos y cajas con búsqueda en anchura «hacia atrás» (tirando cajas desde los destinos): solución garantizada y mínimo de empujes exacto.
+- [x] Validar con el solucionador (secuencia de movimientos) y descartar niveles triviales (cajas que empiezan en su destino, pocos empujes).
+- [x] Métrica de dificultad: empujes mínimos + 2 × cambios de caja.
+- [x] Niveles reproducibles por **semilla** con un RNG propio (SplitMix64) estable entre versiones; códigos para compartir del tipo `2-9F3A0C1D`.
+- [x] Modo campaña: 60 niveles pregenerados en `CampaignLevels.swift` (`Scripts/generate-campaign.sh`), ordenados por dificultad (1 → 4 cajas).
+- [x] Modo libre: ajustes fácil / media / difícil (`GeneratorSettings.preset`).
+- [x] Generación en segundo plano (`async`, cancelable).
+- Rendimiento (Release): fácil < 2 ms, media ≈ 11 ms, difícil ≈ 0,5 s de media (máx. ≈ 1,6 s).
+- [ ] Revisar la campaña jugándola (Etapa 8) y regenerar o sustituir niveles poco interesantes.
 
 ## Etapa 4 — Gráficos y animación (SpriteKit)
 - [ ] Definir paleta y guía visual (inspiración textil mapuche, formas planas).

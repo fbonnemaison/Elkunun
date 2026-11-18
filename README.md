@@ -57,6 +57,12 @@ Compilar y ejecutar las pruebas desde la terminal:
 xcodebuild -project Elkunufe.xcodeproj -scheme Elkunufe test
 ```
 
+Los 60 niveles de la campaña están pregenerados en `Sources/ElkunufeCore/CampaignLevels.swift`. Para regenerarlos (tarda unos 20 segundos):
+
+```bash
+Scripts/generate-campaign.sh
+```
+
 ## Estructura
 
 | Carpeta | Contenido |
@@ -64,6 +70,8 @@ xcodebuild -project Elkunufe.xcodeproj -scheme Elkunufe test
 | `Sources/ElkunufeCore` | Lógica del juego, sin interfaz: reglas, solucionador y generador |
 | `Sources/Elkunufe` | App macOS: SwiftUI (menús) y SpriteKit (tablero) |
 | `Tests/ElkunufeCoreTests` | Pruebas unitarias del núcleo |
+| `Tools/CampaignGenerator` | Herramienta que genera los niveles de la campaña |
+| `Scripts` | Scripts de desarrollo |
 
 ## Créditos
 
