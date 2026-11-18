@@ -77,29 +77,35 @@
 - [x] Escalado del tablero a la ventana (casilla máx. 72 pt), texturas a la escala Retina; muros lejanos ocultos.
 - [x] Modo claro / oscuro, cambio en vivo.
 - [x] Respeta «Reducir movimiento» de macOS.
+- [x] Suelo en damero de ajedrez con diferencia de tono tenue (pedido del autor, 18-11-2026): `Theme.floorAlt` mezcla el suelo un 40 % con el color de borde; también en los destinos.
 - Nota cultural: se evitó el rombo escalonado de 3 escalones porque recuerda a la chakana (símbolo andino sagrado).
 - Pantalla de juego provisional (`GameView`) con flechas/WASD, Z deshacer, ⇧Z rehacer, R reiniciar, ↩ siguiente nivel. Para desarrollo: `-startLevel N`.
 
 ## Etapa 5 — Controles e interfaz (SwiftUI)
-- [ ] Teclado: flechas y WASD; `Z`/⌘Z deshacer, `R` reiniciar, `Esc` pausa.
-- [ ] Clic en una casilla para caminar hasta ella (ruta automática, sin empujar).
-- [ ] Menú principal: Campaña, Nivel aleatorio, Introducir semilla, Ajustes, Créditos.
-- [ ] Selector de niveles de campaña con progreso y mejores marcas.
-- [ ] Pantalla de victoria (movimientos, empujes, comparación con el óptimo).
-- [ ] Pista opcional: mostrar el siguiente empuje según el solucionador.
-- [ ] Barra de menús de macOS con los atajos.
-- [ ] Localización español / inglés con String Catalog.
-- [ ] Accesibilidad: VoiceOver básico, contraste alto, reducción de movimiento.
+- [x] Teclado: flechas y WASD; Z / ⌘Z deshacer, ⇧Z / ⇧⌘Z rehacer, R / ⌘R reiniciar, H / ⇧⌘H pista, Esc / ⌘P pausa, ↩ siguiente nivel.
+- [x] Clic en una casilla para caminar hasta ella (ruta automática, sin empujar); clic en una caja vecina para empujarla.
+- [x] Menú principal: Empezar/Continuar campaña, Campaña, Nivel aleatorio, Ayuda y créditos, Ajustes.
+- [x] Selector de la campaña (6 grupos de 10) con progreso, marca de óptimo (★) y mejores marcas; se pueden saltar hasta 3 niveles por delante del último completado.
+- [x] Nivel aleatorio por dificultad o por código; el código se muestra y se copia para compartir; ⌘N crea uno nuevo.
+- [x] Pantalla de victoria (movimientos, empujes, comparación con el mínimo, nueva marca, pistas usadas).
+- [x] Pista: resalta la caja y la dirección del siguiente empuje; avisa si el nivel ya no tiene solución.
+- [x] Pausa con Continuar / Reiniciar / Elegir nivel.
+- [x] Barra de menús de macOS (Archivo, Edición, Juego, Ayuda) con los atajos.
+- [x] Ajustes (⌘,): contraste alto, reducir animaciones, zorro más rápido, borrar progreso (con confirmación).
+- [x] Localización español / inglés con String Catalog (98 cadenas).
+- [x] Accesibilidad: tablero descrito para VoiceOver con acciones para mover, deshacer y pedir pista; aviso al completar; temas de alto contraste (también con «Aumentar contraste» de macOS); «Reducir movimiento».
+- [ ] Probar a fondo con VoiceOver activado.
 
 ## Etapa 6 — Audio (incluido en la versión 1.0)
-- [ ] Efectos: paso, empuje, golpe contra muro/bloqueo, caja en destino, deshacer, victoria; originales o con licencia CC0.
-- [ ] Música ambiental suave (original o CC0), en bucle, con posible inspiración en sonoridades andinas sin usar grabaciones ni piezas tradicionales con derechos.
-- [ ] Motor de audio con `AVAudioEngine` (efectos con baja latencia y música en bucle).
-- [ ] Ajustes: volumen de efectos y de música por separado, y silencio total.
-- [ ] Archivo de créditos de audio con la licencia de cada recurso.
+- [x] Efectos: paso (4 variantes), empuje, choque contra muro, caja en destino, deshacer, pista y victoria. Sintetizados con código (`SoundSynth.swift`): originales, sin grabaciones ni licencias de terceros.
+- [x] Música ambiental en bucle (~46 s, empalme sin corte) con sonoridad andina: drone, cuerdas pulsadas tipo charango (Karplus–Strong), quena con melodía generada por semilla fija y bombo suave (`MusicComposer.swift`). No usa melodías tradicionales.
+- [x] Motor con `AVAudioEngine`: 8 reproductores de efectos que se turnan, música en bucle generada en segundo plano (~0,1 s en Release), reinicio al cambiar la salida de audio.
+- [x] Ajustes: sonido sí/no, volumen de efectos y de música por separado; menú Juego › Silenciar (⌥⌘M).
+- [x] Créditos de audio y licencias en `CREDITS.md`.
+- Verificación: picos ≤ 0,6 sin saturación ni valores inválidos; fundido de 10 ms al final de cada efecto. Falta una escucha atenta para ajustar volúmenes y timbres.
 
 ## Etapa 7 — Persistencia
-- [ ] Guardar progreso de campaña, mejores marcas y ajustes (`UserDefaults` / JSON en Application Support).
+- [x] Guardar progreso de campaña, mejores marcas y ajustes (`UserDefaults`; progreso en JSON con `CampaignProgress`).
 - [ ] Reanudar el nivel en curso al reabrir la app.
 
 ## Etapa 8 — Pulido y pruebas

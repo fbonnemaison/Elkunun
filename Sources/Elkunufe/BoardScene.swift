@@ -36,7 +36,15 @@ final class BoardScene: SKScene {
     private var textures: [TileArt.Kind: SKTexture] = [:]
     private var foxTextures: [FoxArt.View: SKTexture] = [:]
 
-    private var reduceMotion: Bool { NSWorkspace.shared.accessibilityDisplayShouldReduceMotion }
+    private var reduceMotion: Bool { Preferences.reduceMotion }
+
+    /// Si es `false` se ignoran el ratón y los movimientos (pausa, victoria).
+    var isInputEnabled = true
+
+    private let hintLayer = SKNode()
+    /// Pista visible (se vuelve a dibujar si la escena se reconstruye).
+    private var currentHint: (box: Position, direction: Direction)?
+    private static let walkKey = "walk"
 
     // MARK: - Ciclo de vida
 
@@ -48,6 +56,7 @@ final class BoardScene: SKScene {
         boardNode.addChild(tileLayer)
         boardNode.addChild(pieceLayer)
         boardNode.addChild(effectLayer)
+        boardNode.addChild(hintLayer)
         addChild(boardNode)
         computeInterior()
     }
@@ -56,8 +65,12 @@ final class BoardScene: SKScene {
     required init?(coder: NSCoder) { fatalError("init(coder:) no se usa") }
 
     override func didMove(to view: SKView) {
+        // SwiftUI puede volver a presentar la misma escena; solo se reconstruye si hace falta.
+        guard builtSize != size || tileLayer.children.isEmpty else { return }
         rebuild()
     }
+
+    private var builtSize: CGSize = .zero
 
     override func didChangeSize(_ oldSize: CGSize) {
         guard view != nil, size != oldSize else { return }
@@ -76,6 +89,7 @@ final class BoardScene: SKScene {
     // MARK: - API del juego
 
     func load(_ level: Level) {
+        cancelWalk()
         game = GameState(level: level)
         facing = .down
         computeInterior()
@@ -84,6 +98,8 @@ final class BoardScene: SKScene {
     }
 
     func move(_ direction: Direction) {
+        guard isInputEnabled else { return }
+        clearHint()
         let wasSolved = game.isSolved
         let from = game.player
         let result = game.move(direction)
@@ -93,11 +109,14 @@ final class BoardScene: SKScene {
 
         switch result {
         case .blocked:
+            AudioEngine.shared.play(.bump)
             bump(direction)
             return
         case .moved:
+            AudioEngine.shared.play(.step)
             animateFox(from: from, to: game.player, pushing: false)
         case .pushed:
+            AudioEngine.shared.play(.push)
             let boxFrom = game.player
             let boxTo = boxFrom.moved(direction)
             if let node = boxNodes.removeValue(forKey: boxFrom) {
@@ -110,7 +129,10 @@ final class BoardScene: SKScene {
                     .run { [weak self] in
                         guard let self else { return }
                         node.texture = self.texture(onGoal ? .boxOnGoal : .box)
-                        if onGoal && !wasOnGoal { self.celebrateBox(node) }
+                        if onGoal && !wasOnGoal {
+                            AudioEngine.shared.play(.goal)
+                            self.celebrateBox(node)
+                        }
                     },
                 ]))
             }
@@ -119,6 +141,7 @@ final class BoardScene: SKScene {
         onChange?(game)
         if game.isSolved && !wasSolved {
             run(.wait(forDuration: stepDuration)) { [weak self] in
+                AudioEngine.shared.play(.victory)
                 self?.celebrateLevel()
                 self?.onSolved?()
             }
@@ -126,18 +149,26 @@ final class BoardScene: SKScene {
     }
 
     func undo() {
+        cancelWalk()
+        clearHint()
         guard game.undo() else { return }
+        AudioEngine.shared.play(.undo)
         syncPieces(animated: true)
         onChange?(game)
     }
 
     func redo() {
+        cancelWalk()
+        clearHint()
         guard game.redo() else { return }
+        AudioEngine.shared.play(.step)
         syncPieces(animated: true)
         onChange?(game)
     }
 
     func restart() {
+        cancelWalk()
+        clearHint()
         game.restart()
         facing = .down
         syncPieces(animated: false)
@@ -146,7 +177,108 @@ final class BoardScene: SKScene {
 
     // MARK: - Construcción
 
-    private var stepDuration: TimeInterval { reduceMotion ? 0.05 : 0.12 }
+    private var stepDuration: TimeInterval {
+        reduceMotion ? 0.05 : Preferences.fastAnimations ? 0.08 : 0.12
+    }
+
+    // MARK: - Ratón: caminar con clic
+
+    override func mouseDown(with event: NSEvent) {
+        guard isInputEnabled, let target = tile(at: event.location(in: boardNode)) else { return }
+        cancelWalk()
+        // Clic en una caja vecina: empujarla.
+        for d in Direction.allCases where game.player.moved(d) == target && game.boxes.contains(target) {
+            move(d)
+            return
+        }
+        guard let route = game.path(to: target), !route.isEmpty else { return }
+        walk(route)
+    }
+
+    /// Recorre la ruta paso a paso con la animación normal.
+    func walk(_ route: [Direction]) {
+        let steps = route.map { d in
+            SKAction.sequence([.run { [weak self] in self?.move(d) }, .wait(forDuration: stepDuration)])
+        }
+        run(.sequence(steps), withKey: Self.walkKey)
+    }
+
+    func cancelWalk() {
+        removeAction(forKey: Self.walkKey)
+    }
+
+    private func tile(at location: CGPoint) -> Position? {
+        let board = game.board
+        let x = Int(floor(location.x / tileSize + CGFloat(board.width) / 2))
+        let y = Int(floor(CGFloat(board.height) / 2 - location.y / tileSize))
+        let p = Position(x: x, y: y)
+        return interior.contains(p) ? p : nil
+    }
+
+    // MARK: - Pistas
+
+    /// Resalta la caja que hay que empujar y la dirección.
+    func showHint(box: Position, direction: Direction) {
+        clearHint()
+        currentHint = (box, direction)
+        drawHint()
+    }
+
+    private func drawHint() {
+        hintLayer.removeAllChildren()
+        guard let (box, direction) = currentHint else { return }
+        let center = point(box)
+        let ring = SKShapeNode(path: TileArt.rhombus(.zero, tileSize * 0.62))
+        ring.strokeColor = NSColor(cgColor: theme.goal) ?? .systemBlue
+        ring.lineWidth = max(2, tileSize * 0.07)
+        ring.fillColor = .clear
+        ring.position = center
+        ring.zPosition = 20
+        hintLayer.addChild(ring)
+
+        let arrow = SKShapeNode(path: arrowPath(size: tileSize * 0.42))
+        arrow.fillColor = NSColor(cgColor: theme.goal) ?? .systemBlue
+        arrow.strokeColor = NSColor(cgColor: theme.floor) ?? .white
+        arrow.lineWidth = max(1, tileSize * 0.03)
+        arrow.position = CGPoint(x: center.x + CGFloat(direction.dx) * tileSize * 0.75,
+                                 y: center.y - CGFloat(direction.dy) * tileSize * 0.75)
+        arrow.zRotation = switch direction {
+        case .right: 0
+        case .up: .pi / 2
+        case .left: .pi
+        case .down: -.pi / 2
+        }
+        arrow.zPosition = 21
+        hintLayer.addChild(arrow)
+
+        if !reduceMotion {
+            let pulse = SKAction.sequence([.scale(to: 1.1, duration: 0.4), .scale(to: 1.0, duration: 0.4)])
+            ring.run(.repeatForever(pulse))
+            let nudge = SKAction.sequence([
+                .moveBy(x: CGFloat(direction.dx) * tileSize * 0.1, y: -CGFloat(direction.dy) * tileSize * 0.1, duration: 0.4),
+                .moveBy(x: -CGFloat(direction.dx) * tileSize * 0.1, y: CGFloat(direction.dy) * tileSize * 0.1, duration: 0.4),
+            ])
+            arrow.run(.repeatForever(nudge))
+        }
+    }
+
+    func clearHint() {
+        currentHint = nil
+        hintLayer.removeAllChildren()
+    }
+
+    /// Flecha apuntando a la derecha, centrada en el origen.
+    private func arrowPath(size s: CGFloat) -> CGPath {
+        let p = CGMutablePath()
+        p.addLines(between: [
+            CGPoint(x: -s * 0.5, y: s * 0.18), CGPoint(x: s * 0.05, y: s * 0.18),
+            CGPoint(x: s * 0.05, y: s * 0.45), CGPoint(x: s * 0.5, y: 0),
+            CGPoint(x: s * 0.05, y: -s * 0.45), CGPoint(x: s * 0.05, y: -s * 0.18),
+            CGPoint(x: -s * 0.5, y: -s * 0.18),
+        ])
+        p.closeSubpath()
+        return p
+    }
 
     /// Tamaño máximo de casilla en puntos, para que los niveles pequeños no se vean gigantes.
     private static let maxTileSize: CGFloat = 72
@@ -165,6 +297,7 @@ final class BoardScene: SKScene {
 
     /// Recalcula tamaño de casilla y texturas, y vuelve a crear todos los nodos.
     private func rebuild() {
+        builtSize = size
         backgroundColor = NSColor(cgColor: theme.background) ?? .black
         let board = game.board
         let margin: CGFloat = 0.92
@@ -182,11 +315,16 @@ final class BoardScene: SKScene {
         tileLayer.removeAllChildren()
         pieceLayer.removeAllChildren()
         effectLayer.removeAllChildren()
+        hintLayer.removeAllChildren()
         boxNodes = [:]
 
         for p in board.positions {
             if interior.contains(p) {
-                addTile(board.isGoal(p) ? .goal : .floor, at: p, z: 0)
+                // Damero tenue: alterna el tono según la paridad de la casilla.
+                let alternate = (p.x + p.y).isMultiple(of: 2)
+                let kind: TileArt.Kind = board.isGoal(p) ? (alternate ? .goalAlt : .goal)
+                                                         : (alternate ? .floorAlt : .floor)
+                addTile(kind, at: p, z: 0)
             } else if board.isWall(p), touchesInterior(p) {
                 addTile(.wall, at: p, z: 1)
             }
@@ -211,6 +349,7 @@ final class BoardScene: SKScene {
         fox.zPosition = 3
         pieceLayer.addChild(fox)
         startIdle()
+        drawHint()
     }
 
     private func addTile(_ kind: TileArt.Kind, at p: Position, z: CGFloat) {

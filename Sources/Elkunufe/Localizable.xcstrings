@@ -1,51 +1,1077 @@
 {
-  "sourceLanguage" : "es",
-  "strings" : {
-    "¡Nivel completado!" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Level complete!" } }
+  "sourceLanguage": "es",
+  "strings": {
+    " ": {
+      "shouldTranslate": false
+    },
+    "%lld": {
+      "shouldTranslate": false
+    },
+    "Activar sonido": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unmute"
+          }
+        }
       }
     },
-    "Anterior" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Previous" } }
+    "Ajustes": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings"
+          }
+        }
       }
     },
-    "Deshacer" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Undo" } }
+    "Animación": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Animation"
+          }
+        }
       }
     },
-    "Empujes: %lld / mínimo %lld" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pushes: %1$lld / best %2$lld" } }
+    "Aspecto": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Appearance"
+          }
+        }
       }
     },
-    "Movimientos: %lld" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Moves: %lld" } }
+    "Así ya no tiene solución. Deshaz (Z) o reinicia (R).": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This can't be solved anymore. Undo (Z) or restart (R)."
+          }
+        }
       }
     },
-    "Nivel %lld de %lld" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Level %1$lld of %2$lld" } }
+    "Ayuda de Elkünufe": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elkünufe Help"
+          }
+        }
       }
     },
-    "Reiniciar" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Restart" } }
+    "Ayuda y créditos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Help & Credits"
+          }
+        }
       }
     },
-    "Siguiente" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Next" } }
+    "Borrar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erase"
+          }
+        }
       }
     },
-    "Tablero" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Board" } }
+    "Borrar progreso…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erase Progress…"
+          }
+        }
+      }
+    },
+    "Caminar hasta ella": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Walk there"
+          }
+        }
+      }
+    },
+    "Campaña": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Campaign"
+          }
+        }
+      }
+    },
+    "Clic en una casilla": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Click a tile"
+          }
+        }
+      }
+    },
+    "Colores y formas inspirados con respeto en los textiles mapuches.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Colors and shapes respectfully inspired by Mapuche textiles."
+          }
+        }
+      }
+    },
+    "Completados: %lld de %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Completed: %1$lld of %2$lld"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Completados: %1$lld de %2$lld"
+          }
+        }
+      }
+    },
+    "Construyendo el almacén…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Building the storehouse…"
+          }
+        }
+      }
+    },
+    "Continuar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue"
+          }
+        }
+      }
+    },
+    "Continuar · nivel %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue · level %lld"
+          }
+        }
+      }
+    },
+    "Contraste alto": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "High contrast"
+          }
+        }
+      }
+    },
+    "Controles": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Controls"
+          }
+        }
+      }
+    },
+    "Copiar el código para compartir este nivel": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy the code to share this level"
+          }
+        }
+      }
+    },
+    "Creado por App-Zilla": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Made by App-Zilla"
+          }
+        }
+      }
+    },
+    "Crear nivel": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create Level"
+          }
+        }
+      }
+    },
+    "Código abierto con licencia MIT · © 2026 App-Zilla": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open source under the MIT license · © 2026 App-Zilla"
+          }
+        }
+      }
+    },
+    "Código copiado: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Code copied: %@"
+          }
+        }
+      }
+    },
+    "Cómo se juega": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How to Play"
+          }
+        }
+      }
+    },
+    "Deshacer": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Undo"
+          }
+        }
+      }
+    },
+    "Deshacer (Z)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Undo (Z)"
+          }
+        }
+      }
+    },
+    "Deshacer · Rehacer": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Undo · Redo"
+          }
+        }
+      }
+    },
+    "Dificultad": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Difficulty"
+          }
+        }
+      }
+    },
+    "Difícil": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hard"
+          }
+        }
+      }
+    },
+    "Efectos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Effects"
+          }
+        }
+      }
+    },
+    "Ej.: 2-9F3A0C1D": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "e.g. 2-9F3A0C1D"
+          }
+        }
+      }
+    },
+    "El que guarda las cosas": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The one who keeps things"
+          }
+        }
+      }
+    },
+    "Elegir nivel": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose Level"
+          }
+        }
+      }
+    },
+    "Elige la dificultad": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose the difficulty"
+          }
+        }
+      }
+    },
+    "Elkünufe": {
+      "shouldTranslate": false
+    },
+    "Empezar campaña": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start Campaign"
+          }
+        }
+      }
+    },
+    "Empuja la caja marcada. Quedan al menos %lld empujes.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Push the marked box. At least %lld pushes to go."
+          }
+        }
+      }
+    },
+    "Empujes: %lld · mínimo %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pushes: %1$lld · best %2$lld"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Empujes: %1$lld · mínimo %2$lld"
+          }
+        }
+      }
+    },
+    "Esc": {
+      "shouldTranslate": false
+    },
+    "Flechas o W A S D": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arrow keys or W A S D"
+          }
+        }
+      }
+    },
+    "Fácil": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Easy"
+          }
+        }
+      }
+    },
+    "H": {
+      "shouldTranslate": false
+    },
+    "Inspirado en el género de empujar cajas creado por Sokoban (Hiroyuki Imabayashi, 1981). Elkünufe es un juego independiente, sin relación con Sokoban ni con sus titulares; sus niveles, gráficos y sonidos son originales.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inspired by the box-pushing genre created by Sokoban (Hiroyuki Imabayashi, 1981). Elkünufe is an independent game, not affiliated with Sokoban or its owners; its levels, graphics and sounds are original."
+          }
+        }
+      }
+    },
+    "Juego": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Game"
+          }
+        }
+      }
+    },
+    "Jugar código": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Play Code"
+          }
+        }
+      }
+    },
+    "Lleva cada caja a un destino marcado con un rombo. Cuando todas están en su sitio, el nivel está completo.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move every box onto a target marked with a diamond. When they are all in place, the level is complete."
+          }
+        }
+      }
+    },
+    "Los niveles se generan por procedimiento con un método de plantillas basado en el trabajo de Joshua Taylor e Ian Parberry (2011).": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Levels are procedurally generated with a template method based on the work of Joshua Taylor and Ian Parberry (2011)."
+          }
+        }
+      }
+    },
+    "Media": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Medium"
+          }
+        }
+      }
+    },
+    "Mejor: %lld movimientos, %lld empujes (mínimo %lld)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Best: %1$lld moves, %2$lld pushes (minimum %3$lld)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Mejor: %1$lld movimientos, %2$lld empujes (mínimo %3$lld)"
+          }
+        }
+      }
+    },
+    "Menú principal": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Main Menu"
+          }
+        }
+      }
+    },
+    "Mover": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move"
+          }
+        }
+      }
+    },
+    "Mover a la derecha": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move right"
+          }
+        }
+      }
+    },
+    "Mover a la izquierda": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move left"
+          }
+        }
+      }
+    },
+    "Mover abajo": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move down"
+          }
+        }
+      }
+    },
+    "Mover arriba": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move up"
+          }
+        }
+      }
+    },
+    "Movimientos: %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moves: %lld"
+          }
+        }
+      }
+    },
+    "Música": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Music"
+          }
+        }
+      }
+    },
+    "Nivel %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Level %lld"
+          }
+        }
+      }
+    },
+    "Nivel %lld de %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Level %1$lld of %2$lld"
+          }
+        }
+      }
+    },
+    "Nivel %lld, bloqueado": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Level %lld, locked"
+          }
+        }
+      }
+    },
+    "Nivel %lld, completado": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Level %lld, completed"
+          }
+        }
+      }
+    },
+    "Nivel %lld, completado con el mínimo de empujes": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Level %lld, completed with the fewest pushes"
+          }
+        }
+      }
+    },
+    "Nivel aleatorio": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Random Level"
+          }
+        }
+      }
+    },
+    "Nivel aleatorio nuevo": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New Random Level"
+          }
+        }
+      }
+    },
+    "Nivel aleatorio · difícil": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Random level · hard"
+          }
+        }
+      }
+    },
+    "Nivel aleatorio · fácil": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Random level · easy"
+          }
+        }
+      }
+    },
+    "Nivel aleatorio · medio": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Random level · medium"
+          }
+        }
+      }
+    },
+    "Niveles %lld–%lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Levels %1$lld–%2$lld"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Niveles %1$lld–%2$lld"
+          }
+        }
+      }
+    },
+    "Niveles completados": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Levels completed"
+          }
+        }
+      }
+    },
+    "No encontré una pista a tiempo. Prueba a deshacer algún movimiento.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn't find a hint in time. Try undoing a move."
+          }
+        }
+      }
+    },
+    "No se pudo crear un nivel con ese código. Prueba otro.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn't create a level from that code. Try another one."
+          }
+        }
+      }
+    },
+    "Otro nivel": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Another Level"
+          }
+        }
+      }
+    },
+    "Pausa": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pause"
+          }
+        }
+      }
+    },
+    "Pausa (Esc)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pause (Esc)"
+          }
+        }
+      }
+    },
+    "Pista": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hint"
+          }
+        }
+      }
+    },
+    "Pista (H)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hint (H)"
+          }
+        }
+      }
+    },
+    "Pistas usadas: %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hints used: %lld"
+          }
+        }
+      }
+    },
+    "Progreso": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Progress"
+          }
+        }
+      }
+    },
+    "R": {
+      "shouldTranslate": false
+    },
+    "Reducir animaciones": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reduce animations"
+          }
+        }
+      }
+    },
+    "Rehacer": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Redo"
+          }
+        }
+      }
+    },
+    "Reiniciar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restart"
+          }
+        }
+      }
+    },
+    "Reiniciar (R)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restart (R)"
+          }
+        }
+      }
+    },
+    "Reiniciar el nivel": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restart the level"
+          }
+        }
+      }
+    },
+    "Reiniciar nivel": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restart Level"
+          }
+        }
+      }
+    },
+    "Repetir": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Play Again"
+          }
+        }
+      }
+    },
+    "Se perderán los niveles completados y las mejores marcas. No se puede deshacer.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Completed levels and best scores will be lost. This cannot be undone."
+          }
+        }
+      }
+    },
+    "Siguiente nivel": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next Level"
+          }
+        }
+      }
+    },
+    "Silenciar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mute"
+          }
+        }
+      }
+    },
+    "Solo puedes empujar las cajas, nunca tirar de ellas.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can only push boxes, never pull them."
+          }
+        }
+      }
+    },
+    "Solo puedes empujar una caja a la vez.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can only push one box at a time."
+          }
+        }
+      }
+    },
+    "Sonido": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sound"
+          }
+        }
+      }
+    },
+    "Tablero": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Board"
+          }
+        }
+      }
+    },
+    "También se activa con «Aumentar contraste» en Accesibilidad de macOS.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Also turned on by “Increase contrast” in macOS Accessibility settings."
+          }
+        }
+      }
+    },
+    "Una caja en una esquina ya no se puede sacar: deshaz o reinicia.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A box pushed into a corner can't be moved out: undo or restart."
+          }
+        }
+      }
+    },
+    "Ver la campaña": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View Campaign"
+          }
+        }
+      }
+    },
+    "Volver": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Back"
+          }
+        }
+      }
+    },
+    "Z  ·  ⇧Z": {
+      "shouldTranslate": false
+    },
+    "Zorro en la columna %lld, fila %lld. Cajas guardadas: %lld de %lld. Movimientos: %lld.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fox at column %1$lld, row %2$lld. Boxes stored: %3$lld of %4$lld. Moves: %5$lld."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Zorro en la columna %1$lld, fila %2$lld. Cajas guardadas: %3$lld de %4$lld. Movimientos: %5$lld."
+          }
+        }
+      }
+    },
+    "Zorro más rápido": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Faster fox"
+          }
+        }
+      }
+    },
+    "¡Con el mínimo de empujes!": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "With the fewest pushes!"
+          }
+        }
+      }
+    },
+    "¡Nivel completado!": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Level complete!"
+          }
+        }
+      }
+    },
+    "¡Nueva mejor marca!": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New best score!"
+          }
+        }
+      }
+    },
+    "«Elkünufe» significa en mapudungun «el que guarda o deja cosas», del verbo «elkünun» (guardar, dejar). El protagonista es un zorro culpeo, el zorro colorado de los Andes, que vive desde Ecuador hasta Tierra del Fuego.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“Elkünufe” means “the one who keeps or leaves things” in Mapudungun, from the verb “elkünun” (to keep, to leave). The hero is a culpeo, the red fox of the Andes, found from Ecuador to Tierra del Fuego."
+          }
+        }
+      }
+    },
+    "¿Borrar todo el progreso de la campaña?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erase all campaign progress?"
+          }
+        }
+      }
+    },
+    "¿Tienes un código?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Have a code?"
+          }
+        }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

@@ -58,8 +58,65 @@ struct Theme: Equatable {
         effect: rgb(0xF2EDE4)
     )
 
-    static func forScheme(_ scheme: ColorScheme) -> Theme {
-        scheme == .dark ? .dark : .light
+    /// Alto contraste claro: suelo blanco, muros negros, contornos marcados.
+    static let highContrastLight = Theme(
+        background: rgb(0xFFFFFF),
+        floor: rgb(0xFFFFFF),
+        floorEdge: rgb(0x8A8A8A),
+        wall: rgb(0x000000),
+        wallAccent: rgb(0xD0101C),
+        goal: rgb(0x0030C0),
+        box: rgb(0xE0A030),
+        boxDark: rgb(0x000000),
+        boxLight: rgb(0xFFE0A0),
+        boxOnGoal: rgb(0xD0101C),
+        boxOnGoalAccent: rgb(0xFFFFFF),
+        fox: rgb(0xD05010),
+        foxDark: rgb(0x000000),
+        foxLight: rgb(0xFFFFFF),
+        effect: rgb(0xD0101C)
+    )
+
+    /// Alto contraste oscuro: suelo negro, muros grises, colores saturados.
+    static let highContrastDark = Theme(
+        background: rgb(0x000000),
+        floor: rgb(0x000000),
+        floorEdge: rgb(0x707070),
+        wall: rgb(0x5A5A5A),
+        wallAccent: rgb(0xFF4050),
+        goal: rgb(0x60A0FF),
+        box: rgb(0xF0B040),
+        boxDark: rgb(0xFFFFFF),
+        boxLight: rgb(0xFFE6B0),
+        boxOnGoal: rgb(0xFF3040),
+        boxOnGoalAccent: rgb(0xFFFFFF),
+        fox: rgb(0xFF7030),
+        foxDark: rgb(0xFFFFFF),
+        foxLight: rgb(0xFFFFFF),
+        effect: rgb(0xFFFFFF)
+    )
+
+    /// Color de las casillas alternas del damero: el suelo mezclado un poco con su borde,
+    /// para que la diferencia sea tenue.
+    var floorAlt: CGColor {
+        let a = floor.components ?? [0, 0, 0, 1]
+        let b = floorEdge.components ?? a
+        let t: CGFloat = 0.4
+        return CGColor(srgbRed: a[0] + (b[0] - a[0]) * t,
+                       green: a[1] + (b[1] - a[1]) * t,
+                       blue: a[2] + (b[2] - a[2]) * t,
+                       alpha: 1)
+    }
+
+    /// Tema según el modo de color y el contraste pedido (ajuste propio o el de Accesibilidad de macOS).
+    static func current(_ scheme: ColorScheme, highContrast: Bool) -> Theme {
+        let contrast = highContrast || NSWorkspace.shared.accessibilityDisplayShouldIncreaseContrast
+        switch (scheme == .dark, contrast) {
+        case (false, false): return .light
+        case (true, false): return .dark
+        case (false, true): return .highContrastLight
+        case (true, true): return .highContrastDark
+        }
     }
 
     private static func rgb(_ hex: UInt32) -> CGColor {

@@ -79,6 +79,8 @@ Creado por **App-Zilla**.
 
 El nombre proviene del mapudungun, la lengua del pueblo mapuche. La estética se inspira con respeto en los colores y la geometría de los textiles mapuches.
 
+Los gráficos, la música y los efectos de sonido se generan con código y son originales. Detalle en [CREDITS.md](CREDITS.md).
+
 ## Licencia
 
 [MIT](LICENSE) © 2026 App-Zilla

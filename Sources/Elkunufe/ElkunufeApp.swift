@@ -4,11 +4,26 @@ import SwiftUI
 
 @main
 struct ElkunufeApp: App {
+    @State private var app = AppModel()
+
+    init() {
+        Preferences.registerDefaults()
+    }
+
     var body: some Scene {
-        WindowGroup {
+        Window("Elkünufe", id: "main") {
             ContentView()
-                .frame(minWidth: 640, minHeight: 480)
+                .environment(app)
+                .frame(minWidth: 720, minHeight: 540)
+                .task { AudioEngine.shared.start() }
         }
         .windowStyle(.hiddenTitleBar)
+        .defaultSize(width: 960, height: 720)
+        .commands { GameCommands(app: app) }
+
+        Settings {
+            SettingsView()
+                .environment(app)
+        }
     }
 }

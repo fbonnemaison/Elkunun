@@ -7,15 +7,17 @@ import SpriteKit
 /// Todo se dibuja en un cuadrado unidad (0…1, eje y hacia arriba) escalado a `pixels`.
 enum TileArt {
     enum Kind: CaseIterable {
-        case floor, wall, goal, box, boxOnGoal
+        case floor, floorAlt, wall, goal, goalAlt, box, boxOnGoal
     }
 
     static func texture(_ kind: Kind, theme: Theme, pixels: Int) -> SKTexture {
         let image = render(pixels: pixels) { ctx in
             switch kind {
-            case .floor: drawFloor(ctx, theme)
+            case .floor: drawFloor(ctx, theme, alternate: false)
+            case .floorAlt: drawFloor(ctx, theme, alternate: true)
             case .wall: drawWall(ctx, theme)
-            case .goal: drawGoal(ctx, theme)
+            case .goal: drawGoal(ctx, theme, alternate: false)
+            case .goalAlt: drawGoal(ctx, theme, alternate: true)
             case .box: drawBox(ctx, theme, onGoal: false)
             case .boxOnGoal: drawBox(ctx, theme, onGoal: true)
             }
@@ -51,10 +53,11 @@ enum TileArt {
 
     // MARK: - Casillas
 
-    private static func drawFloor(_ ctx: CGContext, _ t: Theme) {
+    /// Suelo. Las casillas alternas (damero) usan un tono un poco más oscuro.
+    private static func drawFloor(_ ctx: CGContext, _ t: Theme, alternate: Bool) {
         ctx.setFillColor(t.floorEdge)
         ctx.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
-        ctx.setFillColor(t.floor)
+        ctx.setFillColor(alternate ? t.floorAlt : t.floor)
         ctx.fill(CGRect(x: 0.03, y: 0.03, width: 0.94, height: 0.94))
     }
 
@@ -75,8 +78,8 @@ enum TileArt {
         ctx.fillPath()
     }
 
-    private static func drawGoal(_ ctx: CGContext, _ t: Theme) {
-        drawFloor(ctx, t)
+    private static func drawGoal(_ ctx: CGContext, _ t: Theme, alternate: Bool) {
+        drawFloor(ctx, t, alternate: alternate)
         ctx.setStrokeColor(t.goal)
         ctx.setLineWidth(0.06)
         ctx.addPath(rhombus(CGPoint(x: 0.5, y: 0.5), 0.3))

@@ -4,64 +4,107 @@ import ElkunufeCore
 import SpriteKit
 import SwiftUI
 
-/// Pantalla de juego provisional: tablero, contadores y navegación entre niveles de la campaña.
-/// Los menús completos llegan en la Etapa 5.
+/// Pantalla de juego: tablero, contadores, pausa, victoria y pistas.
 struct GameView: View {
-    /// Nivel inicial; para desarrollo se puede abrir otro con `-startLevel N` (1…60).
-    @State private var model = GameModel(levelIndex: max(0, UserDefaults.standard.integer(forKey: "startLevel") - 1))
+    let game: GameModel
     @Environment(\.colorScheme) private var colorScheme
+    @AppStorage(PreferenceKey.highContrast) private var highContrast = false
     @FocusState private var focused: Bool
 
     var body: some View {
         VStack(spacing: 0) {
-            StripeBand()
             header
-            SpriteView(scene: model.scene, preferredFramesPerSecond: 60)
-                .accessibilityLabel(Text("Tablero"))
-            StripeBand()
+            ZStack {
+                SpriteView(scene: game.scene, preferredFramesPerSecond: 60)
+                    .accessibilityElement()
+                    .accessibilityLabel(Text("Tablero"))
+                    .accessibilityValue(Text(game.accessibilityDescription))
+                    .accessibilityAction(named: Text("Mover arriba")) { game.move(.up) }
+                    .accessibilityAction(named: Text("Mover abajo")) { game.move(.down) }
+                    .accessibilityAction(named: Text("Mover a la izquierda")) { game.move(.left) }
+                    .accessibilityAction(named: Text("Mover a la derecha")) { game.move(.right) }
+                    .accessibilityAction(named: Text("Deshacer")) { game.undo() }
+                    .accessibilityAction(named: Text("Pista")) { game.showHint() }
+
+                if let banner = game.banner {
+                    VStack {
+                        Text(banner.text)
+                            .font(.callout.weight(.medium))
+                            .padding(.horizontal, 14)
+                            .padding(.vertical, 8)
+                            .background(.regularMaterial, in: Capsule())
+                            .padding(.top, 8)
+                        Spacer()
+                    }
+                    .transition(.move(edge: .top).combined(with: .opacity))
+                    .task(id: banner) {
+                        try? await Task.sleep(for: .seconds(4))
+                        withAnimation { if game.banner == banner { game.banner = nil } }
+                    }
+                }
+
+                if game.isPaused {
+                    PauseOverlay(game: game)
+                } else if game.showsVictory {
+                    VictoryOverlay(game: game)
+                }
+            }
+            .animation(.easeOut(duration: 0.2), value: game.banner)
+            .animation(.easeOut(duration: 0.2), value: game.isPaused)
+            .animation(.easeOut(duration: 0.25), value: game.showsVictory)
         }
-        .background(Color(cgColor: Theme.forScheme(colorScheme).background))
         .focusable()
         .focused($focused)
         .focusEffectDisabled()
+        .focusedSceneValue(\.gameModel, game)
         .onKeyPress(phases: [.down, .repeat]) { press in handle(press) }
         .onAppear {
             focused = true
-            model.scene.setTheme(.forScheme(colorScheme))
+            game.scene.setTheme(.current(colorScheme, highContrast: highContrast))
         }
         .onChange(of: colorScheme) { _, scheme in
-            model.scene.setTheme(.forScheme(scheme))
+            game.scene.setTheme(.current(scheme, highContrast: highContrast))
+        }
+        .onChange(of: highContrast) { _, value in
+            game.scene.setTheme(.current(colorScheme, highContrast: value))
         }
     }
 
     private var header: some View {
-        HStack(spacing: 16) {
-            Button { model.previous() } label: { Label("Anterior", systemImage: "chevron.left") }
-                .disabled(!model.hasPrevious)
-            Text("Nivel \(model.levelIndex + 1) de \(model.levelCount)")
+        HStack(spacing: 14) {
+            Button { game.togglePause() } label: { Label("Pausa", systemImage: "pause.fill") }
+                .help(Text("Pausa (Esc)"))
+            Text(game.title)
                 .font(.headline)
                 .monospacedDigit()
-            Button { model.next() } label: { Label("Siguiente", systemImage: "chevron.right") }
-                .disabled(!model.hasNext)
-
-            Spacer()
-
-            if model.solved {
-                Text("¡Nivel completado!")
-                    .font(.headline)
-                    .foregroundStyle(Palette.red)
+            if let code = game.levelCode {
+                Button { game.copyCode() } label: {
+                    Label(code.description, systemImage: "doc.on.doc")
+                        .labelStyle(.titleAndIcon)
+                        .font(.callout.monospaced())
+                }
+                .help(Text("Copiar el código para compartir este nivel"))
             }
 
             Spacer()
 
             Group {
-                Text("Movimientos: \(model.moves)")
-                Text("Empujes: \(model.pushes) / mínimo \(model.optimalPushes)")
+                Text("Movimientos: \(game.moves)")
+                Text("Empujes: \(game.pushes) · mínimo \(game.optimalPushes)")
             }
             .monospacedDigit()
-            Button { model.undo() } label: { Label("Deshacer", systemImage: "arrow.uturn.backward") }
-                .disabled(!model.canUndo)
-            Button { model.restart() } label: { Label("Reiniciar", systemImage: "arrow.counterclockwise") }
+            .foregroundStyle(.secondary)
+
+            Button { game.showHint() } label: {
+                Label("Pista", systemImage: game.isComputingHint ? "hourglass" : "lightbulb")
+            }
+            .help(Text("Pista (H)"))
+            .disabled(game.isComputingHint || game.solved)
+            Button { game.undo() } label: { Label("Deshacer", systemImage: "arrow.uturn.backward") }
+                .help(Text("Deshacer (Z)"))
+                .disabled(!game.canUndo)
+            Button { game.restart() } label: { Label("Reiniciar", systemImage: "arrow.counterclockwise") }
+                .help(Text("Reiniciar (R)"))
         }
         .labelStyle(.iconOnly)
         .buttonStyle(.borderless)
@@ -70,20 +113,24 @@ struct GameView: View {
     }
 
     private func handle(_ press: KeyPress) -> KeyPress.Result {
+        // Los atajos con ⌘ los gestiona la barra de menús.
+        guard !press.modifiers.contains(.command) else { return .ignored }
         switch press.key {
-        case .upArrow: model.move(.up)
-        case .downArrow: model.move(.down)
-        case .leftArrow: model.move(.left)
-        case .rightArrow: model.move(.right)
-        case .return where model.solved: model.next()
+        case .upArrow: game.move(.up)
+        case .downArrow: game.move(.down)
+        case .leftArrow: game.move(.left)
+        case .rightArrow: game.move(.right)
+        case .escape: game.togglePause()
+        case .return where game.showsVictory: game.next()
         default:
             switch press.characters.lowercased() {
-            case "w": model.move(.up)
-            case "s": model.move(.down)
-            case "a": model.move(.left)
-            case "d": model.move(.right)
-            case "z": press.modifiers.contains(.shift) ? model.redo() : model.undo()
-            case "r": model.restart()
+            case "w": game.move(.up)
+            case "s": game.move(.down)
+            case "a": game.move(.left)
+            case "d": game.move(.right)
+            case "z": press.modifiers.contains(.shift) ? game.redo() : game.undo()
+            case "r": game.restart()
+            case "h": game.showHint()
             default: return .ignored
             }
         }
@@ -91,7 +138,92 @@ struct GameView: View {
     }
 }
 
-#Preview {
-    GameView()
-        .frame(width: 800, height: 600)
+// MARK: - Superposiciones
+
+private struct OverlayCard<Content: View>: View {
+    @ViewBuilder var content: Content
+
+    var body: some View {
+        ZStack {
+            Rectangle().fill(.black.opacity(0.35)).ignoresSafeArea()
+            VStack(spacing: 14) { content }
+                .padding(28)
+                .frame(minWidth: 320)
+                .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 16))
+                .shadow(radius: 20)
+        }
+        .transition(.opacity)
+    }
+}
+
+private struct PauseOverlay: View {
+    let game: GameModel
+
+    var body: some View {
+        OverlayCard {
+            Text("Pausa").font(.title.weight(.bold))
+            Button("Continuar") { game.togglePause() }
+                .buttonStyle(MenuButtonStyle(prominent: true))
+                .keyboardShortcut(.defaultAction)
+            Button("Reiniciar nivel") { game.restart() }
+                .buttonStyle(MenuButtonStyle())
+            Button(game.campaignIndex == nil ? "Volver" : "Elegir nivel") { game.exitToMenu() }
+                .buttonStyle(MenuButtonStyle())
+        }
+    }
+}
+
+private struct VictoryOverlay: View {
+    let game: GameModel
+
+    var body: some View {
+        OverlayCard {
+            FoxImage(size: 72)
+            Text("¡Nivel completado!").font(.title.weight(.bold))
+            VStack(spacing: 4) {
+                Text("Movimientos: \(game.moves)")
+                Text("Empujes: \(game.pushes) · mínimo \(game.optimalPushes)")
+            }
+            .monospacedDigit()
+            if game.isOptimal {
+                Label("¡Con el mínimo de empujes!", systemImage: "star.fill")
+                    .foregroundStyle(Palette.red)
+                    .font(.headline)
+            } else if game.isNewRecord, game.campaignIndex != nil {
+                Text("¡Nueva mejor marca!").font(.headline)
+            }
+            if game.hintsUsed > 0 {
+                Text("Pistas usadas: \(game.hintsUsed)").foregroundStyle(.secondary)
+            }
+            Button(nextTitle) { game.next() }
+                .buttonStyle(MenuButtonStyle(prominent: true))
+                .keyboardShortcut(.defaultAction)
+            HStack {
+                Button("Repetir") { game.restart() }
+                Button(game.campaignIndex == nil ? "Volver" : "Elegir nivel") { game.exitToMenu() }
+            }
+            .buttonStyle(.borderless)
+        }
+    }
+
+    private var nextTitle: LocalizedStringKey {
+        switch game.source {
+        case .campaign where !game.hasNext: "Ver la campaña"
+        case .campaign: "Siguiente nivel"
+        case .random: "Otro nivel"
+        }
+    }
+}
+
+// MARK: - Valor enfocado para los menús
+
+struct GameModelKey: FocusedValueKey {
+    typealias Value = GameModel
+}
+
+extension FocusedValues {
+    var gameModel: GameModel? {
+        get { self[GameModelKey.self] }
+        set { self[GameModelKey.self] = newValue }
+    }
 }
