@@ -10,12 +10,17 @@
 		000502EE509E1B371C863EA9 /* ElkunufeCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2D5459EFF952A24BD9BFB6 /* ElkunufeCoreTests.swift */; };
 		17880258ADAF99EF2D404B5F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E198A65F724290581EF2A5B6 /* Localizable.xcstrings */; };
 		1BFA1D0452FDE14D74048DDF /* ElkunufeCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152D286CCC8F6357EC72EFE7 /* ElkunufeCore.swift */; };
+		3E94ED61E54957D102FAA9EA /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6D0C6D2491DCE0B671FA5 /* GameState.swift */; };
 		4E26380779462E316D34E2F6 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3C3CEE7183BB937BE686E9 /* Palette.swift */; };
+		4FAA28F3B5652BA3C4713BE2 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B684A783C796BCD82E08FAE /* Level.swift */; };
 		577C8F7958D536319A8A51D0 /* ElkunufeCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1BBCE562227770516B1520 /* ElkunufeCore.framework */; };
 		63D6DD830F4E8B97666B4143 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A53F878054A69ED8C2ECDD8 /* ContentView.swift */; };
 		6B44E63E27E04EF6A186C45C /* ElkunufeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4525D8346C349E7A040245B4 /* ElkunufeApp.swift */; };
+		6B8BA1D3D40970D348731AA2 /* LevelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CF3E8AC929E9FE1421419E /* LevelTests.swift */; };
 		764E99BBA3DE2F09CC3A42D1 /* ElkunufeCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1BBCE562227770516B1520 /* ElkunufeCore.framework */; };
 		7BD6E04A69F7FF3CEF014C2A /* ElkunufeCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1BBCE562227770516B1520 /* ElkunufeCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		83195B24DAA92A29B8F7C6B6 /* GameStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEC4E7DC7816A91ECF76F8F /* GameStateTests.swift */; };
+		8438FE606A23FB9619EFD274 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451B7CB526B59C5A330935BC /* Geometry.swift */; };
 		8989BA3A6421C5958ED210C9 /* ElkunufeCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1BBCE562227770516B1520 /* ElkunufeCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E047089FF273AEEBF53D0CDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D7361E9C2E6E6173A721934 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -68,13 +73,18 @@
 		184ECFDE581426F442C9D07F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2B3C3CEE7183BB937BE686E9 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		2E1BBCE562227770516B1520 /* ElkunufeCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ElkunufeCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		451B7CB526B59C5A330935BC /* Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
 		4525D8346C349E7A040245B4 /* ElkunufeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElkunufeApp.swift; sourceTree = "<group>"; };
+		4B684A783C796BCD82E08FAE /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		516D0996B5B3E5B99682F607 /* Elkunufe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Elkunufe.entitlements; sourceTree = "<group>"; };
 		6A53F878054A69ED8C2ECDD8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6C79EA9B0CB7451E83475250 /* ElkunufeCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElkunufeCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		82B6D0C6D2491DCE0B671FA5 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		8D7361E9C2E6E6173A721934 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9DEA118245A89E55FE053DF /* Elkunufe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Elkunufe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E198A65F724290581EF2A5B6 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		F1CF3E8AC929E9FE1421419E /* LevelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelTests.swift; sourceTree = "<group>"; };
+		FAEC4E7DC7816A91ECF76F8F /* GameStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +111,9 @@
 			isa = PBXGroup;
 			children = (
 				152D286CCC8F6357EC72EFE7 /* ElkunufeCore.swift */,
+				82B6D0C6D2491DCE0B671FA5 /* GameState.swift */,
+				451B7CB526B59C5A330935BC /* Geometry.swift */,
+				4B684A783C796BCD82E08FAE /* Level.swift */,
 			);
 			path = ElkunufeCore;
 			sourceTree = "<group>";
@@ -126,6 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				0E2D5459EFF952A24BD9BFB6 /* ElkunufeCoreTests.swift */,
+				FAEC4E7DC7816A91ECF76F8F /* GameStateTests.swift */,
+				F1CF3E8AC929E9FE1421419E /* LevelTests.swift */,
 			);
 			path = ElkunufeCoreTests;
 			sourceTree = "<group>";
@@ -297,6 +312,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				000502EE509E1B371C863EA9 /* ElkunufeCoreTests.swift in Sources */,
+				83195B24DAA92A29B8F7C6B6 /* GameStateTests.swift in Sources */,
+				6B8BA1D3D40970D348731AA2 /* LevelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +322,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BFA1D0452FDE14D74048DDF /* ElkunufeCore.swift in Sources */,
+				3E94ED61E54957D102FAA9EA /* GameState.swift in Sources */,
+				8438FE606A23FB9619EFD274 /* Geometry.swift in Sources */,
+				4FAA28F3B5652BA3C4713BE2 /* Level.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

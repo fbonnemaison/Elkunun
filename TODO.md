@@ -33,13 +33,13 @@
 - [x] Proyecto Xcode generado con XcodeGen (`project.yml`): framework `ElkunufeCore`, app SwiftUI, pruebas con Swift Testing, firma ad hoc, `NSHumanReadableCopyright` = «© 2026 App-Zilla», String Catalog es/en.
 
 ## Etapa 1 — Núcleo del juego (lógica, sin gráficos)
-- [ ] Modelo de datos: `Tile` (muro, suelo, destino), `Level` (cuadrícula + cajas + jugador), `GameState`.
-- [ ] Formato de texto para niveles (estilo XSB estándar: `#` muro, `@` jugador, `$` caja, `.` destino, `*` caja en destino, `+` jugador en destino) para depurar y guardar.
-- [ ] Movimiento y empuje con las reglas anteriores.
-- [ ] Detección de victoria.
-- [ ] Deshacer ilimitado y reiniciar nivel.
-- [ ] Contadores de movimientos y empujes.
-- [ ] Pruebas unitarias (XCTest / Swift Testing) de todas las reglas.
+- [x] Modelo de datos: `Position`, `Direction`, `Tile`, `Board` (parte fija), `Level` (tablero + cajas + jugador, validado), `GameState`.
+- [x] Formato de texto para niveles (estilo XSB estándar: `#` muro, `@` jugador, `$` caja, `.` destino, `*` caja en destino, `+` jugador en destino), lectura y escritura.
+- [x] Movimiento y empuje con las reglas anteriores (`outcome(of:)` permite consultar sin mover).
+- [x] Detección de victoria (tras ganar no se admiten más movimientos salvo deshacer).
+- [x] Deshacer y rehacer ilimitados; reiniciar nivel.
+- [x] Contadores de movimientos y empujes; historial en notación LURD.
+- [x] Pruebas unitarias con Swift Testing (22 pruebas).
 
 ## Etapa 2 — Solucionador
 - [ ] Búsqueda (BFS para niveles pequeños; A* con heurística de distancias caja→destino).
