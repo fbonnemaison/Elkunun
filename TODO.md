@@ -69,13 +69,16 @@
 - [ ] Revisar la campaña jugándola (Etapa 8) y regenerar o sustituir niveles poco interesantes.
 
 ## Etapa 4 — Gráficos y animación (SpriteKit)
-- [ ] Definir paleta y guía visual (inspiración textil mapuche, formas planas).
-- [ ] Sprites vectoriales/geométricos: suelo, muro, destino, caja, caja en destino.
-- [ ] Personaje: zorro culpeo geométrico (pelaje rojizo, patas y hocico oscuros, cola con punta negra), en 4 direcciones; animación de reposo, paso y empuje.
-- [ ] Borde decorativo con patrón geométrico sencillo.
-- [ ] Animaciones cortas de paso y empuje; efecto al colocar una caja en su destino y al completar el nivel.
-- [ ] Escalado del tablero según tamaño de ventana; soporte Retina.
-- [ ] Modo claro / oscuro.
+- [x] Paleta en `Theme.swift` (claro y oscuro): rojo, negro, blanco de lana cruda y añil.
+- [x] Casillas dibujadas con Core Graphics y rasterizadas a la resolución de pantalla: suelo, muro (zigzag textil que empalma con sus vecinos), destino (rombo), caja (fardo tejido) y caja guardada (roja con rombo blanco).
+- [x] Zorro culpeo geométrico en tres vistas (lado —reflejada para la izquierda—, frente y espaldas); reposo (respiración), paso (saltito) y empuje (se agacha).
+- [x] Borde decorativo (franjas de triángulos) arriba y abajo de la ventana.
+- [x] Animaciones de paso, empuje, choque contra muro, deshacer/reiniciar; chispas al guardar una caja y celebración al completar el nivel.
+- [x] Escalado del tablero a la ventana (casilla máx. 72 pt), texturas a la escala Retina; muros lejanos ocultos.
+- [x] Modo claro / oscuro, cambio en vivo.
+- [x] Respeta «Reducir movimiento» de macOS.
+- Nota cultural: se evitó el rombo escalonado de 3 escalones porque recuerda a la chakana (símbolo andino sagrado).
+- Pantalla de juego provisional (`GameView`) con flechas/WASD, Z deshacer, ⇧Z rehacer, R reiniciar, ↩ siguiente nivel. Para desarrollo: `-startLevel N`.
 
 ## Etapa 5 — Controles e interfaz (SwiftUI)
 - [ ] Teclado: flechas y WASD; `Z`/⌘Z deshacer, `R` reiniciar, `Esc` pausa.

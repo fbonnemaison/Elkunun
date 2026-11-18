@@ -2,34 +2,15 @@
 
 import SwiftUI
 
-/// Pantalla provisional hasta tener el tablero (Etapa 4) y el menú principal (Etapa 5).
+/// Raíz de la ventana. Por ahora abre directamente la campaña; el menú principal llega en la Etapa 5.
 struct ContentView: View {
     var body: some View {
-        VStack(spacing: 16) {
-            StripeBand()
-            Spacer()
-            Text("Elkünufe")
-                .font(.system(size: 56, weight: .bold, design: .rounded))
-                .foregroundStyle(Palette.white)
-            Text("El que guarda las cosas")
-                .font(.title3)
-                .foregroundStyle(Palette.white.opacity(0.8))
-            Text("En desarrollo")
-                .font(.callout.weight(.semibold))
-                .padding(.horizontal, 12)
-                .padding(.vertical, 4)
-                .background(Palette.red, in: Capsule())
-                .foregroundStyle(Palette.white)
-            Spacer()
-            StripeBand()
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Palette.indigo)
+        GameView()
     }
 }
 
-/// Franja geométrica simple, a modo de borde de telar.
-private struct StripeBand: View {
+/// Franja geométrica de borde, como el remate de un telar: triángulos rojos y blancos sobre negro.
+struct StripeBand: View {
     var body: some View {
         Canvas { context, size in
             let step: CGFloat = 24
@@ -54,5 +35,5 @@ private struct StripeBand: View {
 
 #Preview {
     ContentView()
-        .frame(width: 640, height: 480)
+        .frame(width: 800, height: 600)
 }

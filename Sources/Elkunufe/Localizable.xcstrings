@@ -1,17 +1,49 @@
 {
   "sourceLanguage" : "es",
   "strings" : {
-    "El que guarda las cosas" : {
+    "¡Nivel completado!" : {
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "The one who keeps things" } }
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Level complete!" } }
       }
     },
-    "Elkünufe" : {
-      "shouldTranslate" : false
-    },
-    "En desarrollo" : {
+    "Anterior" : {
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "In development" } }
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Previous" } }
+      }
+    },
+    "Deshacer" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Undo" } }
+      }
+    },
+    "Empujes: %lld / mínimo %lld" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pushes: %1$lld / best %2$lld" } }
+      }
+    },
+    "Movimientos: %lld" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Moves: %lld" } }
+      }
+    },
+    "Nivel %lld de %lld" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Level %1$lld of %2$lld" } }
+      }
+    },
+    "Reiniciar" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Restart" } }
+      }
+    },
+    "Siguiente" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Next" } }
+      }
+    },
+    "Tablero" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Board" } }
       }
     }
   },
