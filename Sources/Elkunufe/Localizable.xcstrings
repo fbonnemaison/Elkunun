@@ -1,0 +1,19 @@
+{
+  "sourceLanguage" : "es",
+  "strings" : {
+    "El que guarda las cosas" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "The one who keeps things" } }
+      }
+    },
+    "Elkünufe" : {
+      "shouldTranslate" : false
+    },
+    "En desarrollo" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "In development" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}
