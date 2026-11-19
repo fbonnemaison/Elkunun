@@ -1,10 +1,14 @@
 # Créditos y licencias de recursos
 
-Elkünufe © 2026 App-Zilla. Todo el código está bajo la [licencia MIT](LICENSE).
+Elkünun © 2026 App-Zilla. Todo el código está bajo la [licencia MIT](LICENSE).
+
+## El nombre
+
+*Elkünun* (también *elkünün*) es un verbo en mapudungun que significa «ubicar, poner, colocar, situar, dejar puesto», según [mapudungun.cl](https://mapudungun.cl/nemul/el.html#elk%C3%BCn%C3%BCn), que cita a Ñanculef y Huaiquilaf (2022). Describe lo que hace el zorro: dejar cada caja en su lugar.
 
 ## Gráficos
 
-Todos los gráficos (casillas, zorro culpeo, bordes, iconos del tablero) se dibujan con código en `Sources/Elkunufe/TileArt.swift` y `Sources/Elkunufe/FoxArt.swift`. Son originales de App-Zilla, bajo licencia MIT. Los colores y formas se inspiran con respeto en los textiles mapuches, sin reproducir símbolos ceremoniales.
+Todos los gráficos (casillas, zorro culpeo, bordes, iconos del tablero) se dibujan con código en `Sources/Elkunun/TileArt.swift` y `Sources/Elkunun/FoxArt.swift`. Son originales de App-Zilla, bajo licencia MIT. Los colores y formas se inspiran con respeto en los textiles mapuches, sin reproducir símbolos ceremoniales.
 
 ## Audio
 
@@ -25,8 +29,8 @@ La música usa la escala pentatónica de La menor para evocar la sonoridad andin
 
 ## Niveles
 
-Los 60 niveles de la campaña y los niveles aleatorios se generan por procedimiento (`Sources/ElkunufeCore/Generator.swift`). El método de plantillas para construir las habitaciones se basa en la idea publicada por Joshua Taylor e Ian Parberry (2011); las plantillas y el código son propios.
+Los 60 niveles de la campaña y los niveles aleatorios se generan por procedimiento (`Sources/ElkununCore/Generator.swift`). El método de plantillas para construir las habitaciones se basa en la idea publicada por Joshua Taylor e Ian Parberry (2011); las plantillas y el código son propios.
 
 ## Inspiración
 
-Elkünufe se inspira en el género de rompecabezas de empujar cajas que creó Sokoban (Hiroyuki Imabayashi, 1981). No está afiliado a Sokoban ni a sus titulares, y no usa su nombre, niveles, gráficos ni sonidos.
+Elkünun se inspira en el género de rompecabezas de empujar cajas que creó Sokoban (Hiroyuki Imabayashi, 1981). No está afiliado a Sokoban ni a sus titulares, y no usa su nombre, niveles, gráficos ni sonidos.

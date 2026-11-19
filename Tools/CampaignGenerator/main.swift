@@ -1,11 +1,11 @@
 // © 2026 App-Zilla. Licencia MIT.
-// Genera Sources/ElkunufeCore/CampaignLevels.swift con los 60 niveles de la campaña.
+// Genera Sources/ElkununCore/CampaignLevels.swift con los 60 niveles de la campaña.
 // Uso: Scripts/generate-campaign.sh
 
 import Foundation
 
 setvbuf(stdout, nil, _IONBF, 0)
-let output = CommandLine.arguments.count > 1 ? CommandLine.arguments[1] : "Sources/ElkunufeCore/CampaignLevels.swift"
+let output = CommandLine.arguments.count > 1 ? CommandLine.arguments[1] : "Sources/ElkununCore/CampaignLevels.swift"
 
 final class Results: @unchecked Sendable {
     private let lock = NSLock()
