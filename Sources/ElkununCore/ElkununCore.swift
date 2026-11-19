@@ -5,5 +5,5 @@
 /// Las reglas están en `Level` y `GameState`; el solucionador y el generador llegan en las etapas 2–3 (ver TODO.md).
 public enum ElkununCore {
     /// Versión del núcleo.
-    public static let version = "0.1.0"
+    public static let version = "1.0.0"
 }

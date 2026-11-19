@@ -127,7 +127,7 @@
 - [x] Rendimiento (Release): la pista se encuentra en los 60 niveles desde el inicio (la más lenta, nivel 53, 0,8 s; total 2,2 s) y a mitad de partida (mediana 1 ms, máx. 0,16 s; detecta al instante cuando ya no hay solución). `ElkununCore` se compila optimizado también en Debug (pruebas: de 13,7 s a 0,6 s).
 - [x] Icono de la app en estilo «gradiente» (elegido por el autor, 18-11-2026): zorro culpeo facetado sentado de frente sobre fondo rojo-anaranjado con resplandor y destellos, junto a la caja roja del juego (caja guardada) dibujada en el mismo estilo facetado. Se dibuja con código (`Tools/IconGenerator`, `Scripts/generate-icon.sh`); la punta de la cola es negra, como la del culpeo.
 - [x] **Cambio de nombre a «Elkünun»** (pedido del autor, 18-11-2026): verbo mapudungun «ubicar, poner, colocar, dejar puesto» (variante *elkünün*; fuente [mapudungun.cl](https://mapudungun.cl/nemul/el.html#elk%C3%BCn%C3%BCn), Ñanculef y Huaiquilaf 2022). Cambiados: nombre de la app (`Elkunun.app`, «Elkünun» en Finder y en la ventana), título, subtítulo («Poner cada cosa en su lugar»), ayuda y créditos, README, CREDITS y TODO. Nombres internos también renombrados: proyecto `Elkunun.xcodeproj`, esquema y destino `Elkunun`, módulo `ElkununCore`, pruebas `ElkununCoreTests`, carpetas `Sources/Elkunun`, `Sources/ElkununCore` y `Tests/ElkununCoreTests` (con `git mv`, conservando el historial).
-- [ ] **Confirmar el nombre definitivo**: hasta entonces no se publica (bloquea la Etapa 9).
+- [x] **Nombre «Elkünun» confirmado** como definitivo (18-11-2026).
 - [ ] Renombrar la carpeta del repositorio (`Elkunufe` → `Elkunun`); hay que hacerlo con la app de Claude cerrada o desde otra sesión, porque esta trabaja dentro de esa carpeta.
 - [x] Identificador de la app cambiado a `com.appzilla.Elkunun` (18-11-2026). El progreso y los ajustes del Mac de desarrollo se copiaron del contenedor antiguo (`com.appzilla.Elkunufe`), que sigue en `~/Library/Containers/` y se puede borrar.
 - [x] Mapudungun (aclaración del autor, 18-11-2026):
@@ -139,11 +139,10 @@
 - [ ] Probar a fondo con VoiceOver activado.
 
 ## Etapa 9 — Distribución
-> Bloqueada hasta cerrar el nombre del juego (ver Etapa 8).
-
-- [ ] Build Release con firma ad hoc.
-- [ ] Empaquetar en `.zip` o `.dmg`.
-- [ ] Publicar en GitHub Releases con notas en `CHANGELOG.md`.
+- [x] Versión 1.0.0 (18-11-2026): build Release con firma ad hoc, solo arm64, verificada con `codesign --verify --deep --strict`.
+- [x] Empaquetado en `dist/Elkunun-1.0.0.dmg` y `dist/Elkunun-1.0.0.zip`, con `SHA256SUMS.txt`; etiqueta git `v1.0.0`. Notas en `CHANGELOG.md`.
+- [x] Instalada en `/Applications/Elkunun.app` desde el `.dmg` y probada.
+- [ ] Crear el repositorio privado en GitHub y publicar la versión en GitHub Releases (pendiente de autorización).
 - [ ] Capturas y GIF en el README.
 
 ## Ideas futuras
