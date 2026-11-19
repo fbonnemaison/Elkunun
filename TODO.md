@@ -142,7 +142,7 @@
 - [x] Versión 1.0.0 (18-11-2026): build Release con firma ad hoc, solo arm64, verificada con `codesign --verify --deep --strict`.
 - [x] Empaquetado en `dist/Elkunun-1.0.0.dmg` y `dist/Elkunun-1.0.0.zip`, con `SHA256SUMS.txt`; etiqueta git `v1.0.0`. Notas en `CHANGELOG.md`.
 - [x] Instalada en `/Applications/Elkunun.app` desde el `.dmg` y probada.
-- [ ] Crear el repositorio privado en GitHub y publicar la versión en GitHub Releases (pendiente de autorización).
+- [x] Repositorio **privado** creado en GitHub y versión `v1.0.0` publicada en GitHub Releases con el `.dmg`, el `.zip` y `SHA256SUMS.txt` (18-11-2026); suma del `.dmg` descargado verificada.
 - [ ] Capturas y GIF en el README.
 
 ## Ideas futuras
