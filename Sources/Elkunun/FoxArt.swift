@@ -111,4 +111,60 @@ enum FoxArt {
         "...K.KkookK.K...",
         "...sssskkssss...",
     ])
+
+    // MARK: - Retrato
+
+    /// Retrato grande (32×32) para la pantalla de inicio: el zorro del icono, sentado de frente,
+    /// con orejas de interior claro, pecho blanco y la cola enroscada con la punta oscura.
+    /// Usa colores fijos, como el icono.
+    static func portraitImage() -> CGImage {
+        portrait.makeImage { character in
+            switch character {
+            case "K": Theme.rgb(0x1E1210)
+            case "D": Theme.rgb(0x5C2E1E)
+            case "O": Theme.rgb(0xF2851E)
+            case "o": Theme.rgb(0xD95F1A)
+            case "Y": Theme.rgb(0xF9AE3F)
+            case "C": Theme.rgb(0xFBE7CC)
+            case "W": Theme.rgb(0xFFFFFF)
+            case "s": CGColor(gray: 0, alpha: 0.22)
+            default: nil
+            }
+        }
+    }
+
+    static let portrait = PixelArt([
+        "................................",
+        "...KK............KK.............",
+        "...KDK..........KDK.............",
+        "...KCDK........KDCK.............",
+        "...KCCDK......KDCCK.............",
+        "...KCCCDKKKKKKDCCCK.............",
+        "...KCCCOOOOOOOOCCCK.............",
+        "..KYCCOOOOOOOOOOCCYK............",
+        "..KOYOOOOOOOOOOOOYOK............",
+        ".KOOOOOOOOOOOOOOOOOOK...........",
+        ".KOOOOKWOOOOOKWOOOOOK...........",
+        ".KOOOOKKOOOOOKKOOOOOK...........",
+        ".KCCOOKKOOOOOKKOOOCCK...........",
+        ".KCCCCOOOOOOOOOOCCCCK...........",
+        "..KCCCCCOOKKOOCCCCCK............",
+        "...KCCCCCCKKCCCCCCK.....KK......",
+        "....KCCCCCCCCCCCCK.....KDDK.....",
+        ".....KKCCCCCCCCKK.....KDDDDK....",
+        "....KOOCCCCCCCCOOK...KDDDDDK....",
+        "...KOOOCCCCCCCCOOOK..KDDDCCK....",
+        "...KOOOOCCCCCCOOOOK.KOODCCCCK...",
+        "..KOOOOOCCCCCCOOOOOKKOOOCCCCK...",
+        "..KOOOOODCCCCDOOOOOKOOOOOCCCK...",
+        "..KoOOOODDCCDDOOOOoKOOOOOOCCK...",
+        "..KooOOODDCCDDOOOooKOOOOOOOOOK..",
+        ".KooOOOODDKKDDOOOOooKOOOOOOOOK..",
+        ".KDDoOOODDKKDDOOOoDDKOOOOOOOoK..",
+        ".KDDDooODDKKDDOooDDDKoooooooK...",
+        "..KKKKKKKKKKKKKKKKKKKKKKKKKK....",
+        "...sssssssssssssssssssssss......",
+        "................................",
+        "................................",
+    ])
 }

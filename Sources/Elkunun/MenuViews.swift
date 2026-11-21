@@ -12,7 +12,7 @@ struct MainMenuView: View {
     var body: some View {
         VStack(spacing: 12) {
             Spacer()
-            FoxImage(size: 128)
+            FoxPortrait(size: 160)
             Text("Elkünun")
                 .font(.pixel(48))
             Text("Poner cada cosa en su lugar")

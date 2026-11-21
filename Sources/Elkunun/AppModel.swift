@@ -3,6 +3,7 @@
 import ElkununCore
 import Foundation
 import Observation
+import SwiftUI
 
 /// Estado global de la app: pantalla actual, progreso de la campaña y generación de niveles.
 @MainActor
@@ -18,6 +19,14 @@ final class AppModel {
     }
 
     var screen: Screen = .menu
+
+    /// Barrido entre pantallas: 0 descubierto, 1 cubierto, 2 terminado (vuelve a 0 sin animar).
+    private(set) var sweepProgress: Double = 0
+    /// Cambia en cada barrido, para que el borde irregular sea distinto cada vez.
+    private(set) var sweepSeed: UInt64 = 0
+    private var sweepTask: Task<Void, Never>?
+    /// Duración de cada mitad del barrido (cubrir y descubrir).
+    static let sweepHalf: TimeInterval = 0.38
     private(set) var progress: CampaignProgress
     /// Última partida sin terminar (se reanuda al abrir la app o con «Continuar»).
     private(set) var savedSession: SavedSession?
@@ -107,8 +116,35 @@ final class AppModel {
     private func openCampaign(_ index: Int, resume: SavedSession? = nil) {
         guard (0..<Campaign.levelCount).contains(index) else { return }
         let entry = Campaign.entries[index]
-        screen = .game(GameModel(source: .campaign(index), level: entry.level(),
-                                 optimalPushes: entry.optimalPushes, app: self, resume: resume))
+        showGame {
+            GameModel(source: .campaign(index), level: entry.level(),
+                      optimalPushes: entry.optimalPushes, app: self, resume: resume)
+        }
+    }
+
+    /// Abre un nivel con un barrido irregular de izquierda a derecha: primero tapa la pantalla
+    /// actual, cambia de pantalla y luego la destapa. Sin barrido con «Reducir movimiento».
+    /// El nivel se crea cuando la pantalla ya está tapada, para que su reloj no corra antes.
+    private func showGame(_ make: @escaping () -> GameModel) {
+        sweepTask?.cancel()
+        guard !Preferences.reduceMotion else {
+            sweepProgress = 0
+            screen = .game(make())
+            return
+        }
+        // Si un barrido anterior se estaba destapando, empieza de nuevo desde la izquierda.
+        if sweepProgress != 1 { sweepProgress = 0 }
+        sweepSeed &+= 1
+        withAnimation(.easeIn(duration: Self.sweepHalf)) { sweepProgress = 1 }
+        sweepTask = Task { [weak self] in
+            try? await Task.sleep(for: .seconds(Self.sweepHalf))
+            guard let self, !Task.isCancelled else { return }
+            screen = .game(make())
+            withAnimation(.easeOut(duration: Self.sweepHalf)) { sweepProgress = 2 }
+            try? await Task.sleep(for: .seconds(Self.sweepHalf))
+            guard !Task.isCancelled else { return }
+            sweepProgress = 0
+        }
     }
 
     func playRandom(_ code: LevelCode, resume: SavedSession? = nil) {
@@ -127,8 +163,10 @@ final class AppModel {
                 let generated = try await code.generate()
                 guard !Task.isCancelled else { return }
                 isGenerating = false
-                screen = .game(GameModel(source: .random(code), level: generated.level,
-                                         optimalPushes: generated.solution.pushCount, app: self, resume: resume))
+                showGame {
+                    GameModel(source: .random(code), level: generated.level,
+                              optimalPushes: generated.solution.pushCount, app: self, resume: resume)
+                }
             } catch {
                 isGenerating = false
                 if case .noLevelFound? = error as? GeneratorError {

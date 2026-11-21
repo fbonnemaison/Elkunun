@@ -10,21 +10,22 @@ import SwiftUI
 /// Los caracteres se traducen a colores del `Theme`, así que el mismo dibujo sirve para los
 /// modos claro, oscuro y de alto contraste.
 struct PixelArt {
-    /// Lado de todos los dibujos, en píxeles.
+    /// Lado de las casillas y piezas del tablero, en píxeles.
     static let side = 16
 
     let rows: [String]
+    var width: Int { rows.first?.count ?? 0 }
+    var height: Int { rows.count }
 
     init(_ rows: [String]) {
-        precondition(rows.count == Self.side && rows.allSatisfy { $0.count == Self.side },
-                     "Los dibujos pixel art miden 16×16")
+        precondition(!rows.isEmpty && rows.allSatisfy { $0.count == rows[0].count },
+                     "Todas las filas de un dibujo pixel art miden lo mismo")
         self.rows = rows
     }
 
     /// Imagen a 1 píxel por carácter (fila 0 arriba). `color` devuelve `nil` para los transparentes.
     func makeImage(_ color: (Character) -> CGColor?) -> CGImage {
-        let n = Self.side
-        let ctx = CGContext(data: nil, width: n, height: n, bitsPerComponent: 8, bytesPerRow: 0,
+        let ctx = CGContext(data: nil, width: width, height: height, bitsPerComponent: 8, bytesPerRow: 0,
                             space: CGColorSpace(name: CGColorSpace.sRGB)!,
                             bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!
         ctx.setShouldAntialias(false)
@@ -32,7 +33,7 @@ struct PixelArt {
             for (x, character) in row.enumerated() {
                 guard let c = color(character) else { continue }
                 ctx.setFillColor(c)
-                ctx.fill(CGRect(x: x, y: n - 1 - y, width: 1, height: 1))
+                ctx.fill(CGRect(x: x, y: height - 1 - y, width: 1, height: 1))
             }
         }
         return ctx.makeImage()!
