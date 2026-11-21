@@ -6,7 +6,7 @@ Juego de rompecabezas 2D y minimalista para macOS. Eres un zorro culpeo que guar
 
 Inspirado en el género de empujar cajas que popularizó Sokoban (Hiroyuki Imabayashi, 1981). Elkünun es un juego independiente: no está afiliado a Sokoban ni a sus titulares, y todos sus niveles, gráficos y sonidos son originales.
 
-> Versión 1.0.0. Cambios en [CHANGELOG.md](CHANGELOG.md); plan de desarrollo en [TODO.md](TODO.md).
+> Versión 1.1.0. Cambios en [CHANGELOG.md](CHANGELOG.md); plan de desarrollo en [TODO.md](TODO.md).
 
 ## Cómo se juega
 
@@ -25,7 +25,7 @@ Los niveles se generan por procedimiento, y cada uno tiene solución garantizada
 
 ## Instalación
 
-1. Descarga `Elkunun-1.0.0.dmg` (o el `.zip`) de la página de *Releases* del repositorio.
+1. Descarga `Elkunun-1.1.0.dmg` (o el `.zip`) de la página de *Releases* del repositorio.
 2. Abre el `.dmg` y arrastra **Elkunun.app** a la carpeta Aplicaciones (o descomprime el `.zip` y haz lo mismo).
 
 ### Abrir la app por primera vez

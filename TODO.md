@@ -17,7 +17,7 @@
 | Audio | Incluido desde la primera versión (efectos y música) |
 | Idiomas | Español + inglés (String Catalog) |
 | Licencia | MIT |
-| Repositorio | GitHub **privado** hasta nuevo aviso |
+| Repositorio | GitHub **público** desde la versión 1.1.0 (antes, privado) |
 | Autor | App-Zilla |
 
 ## Reglas del juego
@@ -128,6 +128,7 @@
 - [x] Icono de la app en estilo «gradiente» (elegido por el autor, 18-11-2026): zorro culpeo facetado sentado de frente sobre fondo rojo-anaranjado con resplandor y destellos, junto a la caja roja del juego (caja guardada) dibujada en el mismo estilo facetado. Se dibuja con código (`Tools/IconGenerator`, `Scripts/generate-icon.sh`); la punta de la cola es negra, como la del culpeo.
 - [x] Estilo pixel art, como SkiFlow (pedido del autor, 21-11-2026): casillas, cajas, araucarias y zorro en sprites de 16×16 descritos como texto (`PixelArt.swift`), con los colores de cada tema y filtrado `nearest`; casillas en múltiplos exactos de píxel; fuente Public Pixel (CC0) en títulos y botones. Nuevo icono en pixel art aportado por el autor (`Design/AppIcon-source.png`).
 - [x] Pedido del autor (21-11-2026): el zorro del icono, redibujado en pixel art de 32×32, en la pantalla de inicio (`FoxArt.portrait`); barrido irregular de izquierda a derecha al entrar en un nivel y al pasar de nivel (`SweepOverlay`); franjas de telar solo en la pantalla de inicio.
+- [x] Pedido del autor (21-11-2026): ilustración del zorro eligiendo piso en el ascensor, muy tenue, de fondo en la selección de nivel (`LevelSelectBackdrop`; la imagen se guarda como máscara para teñirla según el tema).
 - [x] **Cambio de nombre a «Elkünun»** (pedido del autor, 18-11-2026): verbo mapudungun «ubicar, poner, colocar, dejar puesto» (variante *elkünün*; fuente [mapudungun.cl](https://mapudungun.cl/nemul/el.html#elk%C3%BCn%C3%BCn), Ñanculef y Huaiquilaf 2022). Cambiados: nombre de la app (`Elkunun.app`, «Elkünun» en Finder y en la ventana), título, subtítulo («Poner cada cosa en su lugar»), ayuda y créditos, README, CREDITS y TODO. Nombres internos también renombrados: proyecto `Elkunun.xcodeproj`, esquema y destino `Elkunun`, módulo `ElkununCore`, pruebas `ElkununCoreTests`, carpetas `Sources/Elkunun`, `Sources/ElkununCore` y `Tests/ElkununCoreTests` (con `git mv`, conservando el historial).
 - [x] **Nombre «Elkünun» confirmado** como definitivo (18-11-2026).
 - [ ] Renombrar la carpeta del repositorio (`Elkunufe` → `Elkunun`); hay que hacerlo con la app de Claude cerrada o desde otra sesión, porque esta trabaja dentro de esa carpeta.
@@ -145,6 +146,8 @@
 - [x] Empaquetado en `dist/Elkunun-1.0.0.dmg` y `dist/Elkunun-1.0.0.zip`, con `SHA256SUMS.txt`; etiqueta git `v1.0.0`. Notas en `CHANGELOG.md`.
 - [x] Instalada en `/Applications/Elkunun.app` desde el `.dmg` y probada.
 - [x] Repositorio **privado** creado en GitHub y versión `v1.0.0` publicada en GitHub Releases con el `.dmg`, el `.zip` y `SHA256SUMS.txt` (18-11-2026); suma del `.dmg` descargado verificada.
+- [x] Versión 1.1.0 (21-11-2026): revisión de la licencia MIT (cabeceras, LICENSE y licencia CC0 de la fuente dentro de `Elkunun.app/Contents/Resources` y junto a la app en el `.dmg` y el `.zip`; historial sin datos personales); publicada en GitHub Releases e instalada en `/Applications`.
+- [x] Repositorio **público** en GitHub desde la versión 1.1.0 (21-11-2026).
 - [ ] Capturas y GIF en el README.
 
 ## Ideas futuras

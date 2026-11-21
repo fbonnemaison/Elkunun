@@ -177,6 +177,7 @@ struct CampaignSelectView: View {
                 .frame(maxWidth: .infinity)
             }
         }
+        .background { LevelSelectBackdrop() }
     }
 
     private func groupName(_ group: Int) -> LocalizedStringKey {
@@ -401,5 +402,25 @@ private struct HelpSection: View {
         }
         .multilineTextAlignment(.leading)
         .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+/// Fondo de la selección de nivel: el zorro eligiendo piso en el panel de un ascensor,
+/// muy tenue sobre el color de fondo. La imagen es una máscara (el dibujo en el canal alfa)
+/// que se tiñe de claro en modo oscuro y de oscuro en modo claro.
+struct LevelSelectBackdrop: View {
+    @Environment(\.colorScheme) private var colorScheme
+
+    var body: some View {
+        Image("LevelSelectFox")
+            .renderingMode(.template)
+            .resizable()
+            .scaledToFit()
+            .foregroundStyle(colorScheme == .dark ? Palette.white : Palette.black)
+            .opacity(colorScheme == .dark ? 0.09 : 0.07)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+            .clipped()
+            .allowsHitTesting(false)
+            .accessibilityHidden(true)
     }
 }

@@ -14,13 +14,17 @@ Todos los gráficos (casillas, zorro culpeo, araucarias, bordes, iconos del tabl
 
 Zorro culpeo en pixel art junto a una caja guardada, frente a un bosque (`Design/AppIcon-source.png`), aportado por App-Zilla.
 
+## Ilustración de la selección de nivel
+
+El zorro eligiendo piso en el panel de un ascensor (`Design/LevelSelect-source.webp`), aportado por App-Zilla. En la app se usa como máscara tenue sobre el fondo (`Assets.xcassets/LevelSelectFox`).
+
 ## Fuente
 
 | Recurso | Autor | Licencia | Uso en Elkünun |
 |---|---|---|---|
 | [Public Pixel Font](https://opengameart.org/content/public-pixel-font) (v1.24) | GGBotNet | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Títulos y botones (`Sources/Elkunun/Resources/Fonts/PublicPixel.ttf`) |
 
-La licencia original está en [Licenses/](Licenses). CC0 no obliga a dar crédito, pero lo damos con gusto.
+La licencia original está en [Licenses/](Licenses) y se incluye dentro de la app. CC0 no obliga a dar crédito, pero lo damos con gusto.
 
 ## Audio
 

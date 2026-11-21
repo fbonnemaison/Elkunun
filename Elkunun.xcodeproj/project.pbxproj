@@ -41,6 +41,7 @@
 		9228E5D3E9F2A0E6F43F935B /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AF0B172AA8FD5B967C69A5 /* GameModel.swift */; };
 		9777017D2A881E0ACD3F53CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 149B7DD07DDE8DCBFA97E29F /* Assets.xcassets */; };
 		992CB49849F0E488A654CBF0 /* CampaignProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D833D10B31539C15EE1560 /* CampaignProgress.swift */; };
+		A1427B804655EBBFE5CB1846 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = FCAA98950A44BA382F1D4F31 /* LICENSE */; };
 		A8D71BF51ED298B44C37CEA6 /* SavedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48582A5349C526BCF0ECF840 /* SavedSession.swift */; };
 		AB7095542885F1F03345822C /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1B163AAF1D446B066E9463 /* Palette.swift */; };
 		ABA23F7DE454DAF20CA27CEF /* TileArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9278ECC842A4C05022816478 /* TileArt.swift */; };
@@ -55,6 +56,7 @@
 		F740D9B3375397A6724186A0 /* LevelCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A50493FEA23C56972B0FD3 /* LevelCode.swift */; };
 		FBCDB47DCBEEA6629D067A0C /* SeededRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BF73307218C4D66DDB10C7 /* SeededRandom.swift */; };
 		FD965BFB80ACC0FBB016D7E1 /* GeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A5648D320FA3B846FA50FA /* GeneratorTests.swift */; };
+		FE44A104284D2D0FCA1D25D1 /* PublicPixel-License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 162F1038513B807714300C0C /* PublicPixel-License.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,7 @@
 		0C1B163AAF1D446B066E9463 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		131533A8D52C7BA8B942FC03 /* GameStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateTests.swift; sourceTree = "<group>"; };
 		149B7DD07DDE8DCBFA97E29F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		162F1038513B807714300C0C /* PublicPixel-License.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "PublicPixel-License.txt"; sourceTree = "<group>"; };
 		17F3837BF81E3DB27DFF53A6 /* Assist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assist.swift; sourceTree = "<group>"; };
 		199C8235DB6B0E36EECB2E95 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		29A50493FEA23C56972B0FD3 /* LevelCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCode.swift; sourceTree = "<group>"; };
@@ -148,6 +151,7 @@
 		F669AF9576364FADC70A5E22 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		F6999BFD2B5FA991B2C255D4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		FA8E9667CB2C359B15F7FD82 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
+		FCAA98950A44BA382F1D4F31 /* LICENSE */ = {isa = PBXFileReference; path = LICENSE; sourceTree = "<group>"; };
 		FE5C5C5FF68D75269D2B4CCB /* ElkununCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElkununCore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,6 +212,14 @@
 				6FA2ABB38F12B4DAE3B45044 /* PublicPixel.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		9FB7D36AC160F109CA61F0DE /* Licenses */ = {
+			isa = PBXGroup;
+			children = (
+				162F1038513B807714300C0C /* PublicPixel-License.txt */,
+			);
+			path = Licenses;
 			sourceTree = "<group>";
 		};
 		B72B9B14B7B17F6624F30789 /* Resources */ = {
@@ -284,6 +296,8 @@
 		FCE422DEF9AABAD74CDFA104 = {
 			isa = PBXGroup;
 			children = (
+				FCAA98950A44BA382F1D4F31 /* LICENSE */,
+				9FB7D36AC160F109CA61F0DE /* Licenses */,
 				04B29B5D79037DDB024ED86C /* Sources */,
 				D0553B031644EDA84B782BD7 /* Tests */,
 				EE6F3EE12C62CAA59F2E3F1A /* Products */,
@@ -402,7 +416,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9777017D2A881E0ACD3F53CF /* Assets.xcassets in Resources */,
+				A1427B804655EBBFE5CB1846 /* LICENSE in Resources */,
 				DC3A5A7ADD40C6F1EDE3E0B8 /* Localizable.xcstrings in Resources */,
+				FE44A104284D2D0FCA1D25D1 /* PublicPixel-License.txt in Resources */,
 				21596FFE019F47E07DFB2FC8 /* PublicPixel.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -525,7 +541,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
@@ -540,7 +556,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = NO;
@@ -608,7 +624,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
@@ -629,7 +645,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = NO;
