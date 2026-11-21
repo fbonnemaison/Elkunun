@@ -14,6 +14,7 @@
 		1AB098F0E7B3551730A104FC /* AudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC482FD6E05A94F6778118 /* AudioEngine.swift */; };
 		1F0A540835062BB892CAD407 /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF5263077D3065510FF5AA /* PriorityQueue.swift */; };
 		1FC5A942F8677E9A5A519AD8 /* SavedSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B5B9500F2A0F13B00B9A4 /* SavedSessionTests.swift */; };
+		21596FFE019F47E07DFB2FC8 /* PublicPixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FA2ABB38F12B4DAE3B45044 /* PublicPixel.ttf */; };
 		2210722561B11377E8E1B25A /* GameStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131533A8D52C7BA8B942FC03 /* GameStateTests.swift */; };
 		2A54DC0322459AC14CC17ADC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199C8235DB6B0E36EECB2E95 /* Theme.swift */; };
 		35D0ABB479E07DFA3A0387AB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D91B46BD2005581C0027A05 /* ContentView.swift */; };
@@ -30,6 +31,7 @@
 		61ACB02DA1CF0319C0425930 /* FoxArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B081AF95A28F6894777037 /* FoxArt.swift */; };
 		65DF1417E44428C85778EDBE /* AssistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE9D2F05815E4EA2CC04637 /* AssistTests.swift */; };
 		666257C89E49F8FC94670640 /* ElkununCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9E5D739CE10BC12CDF062DAA /* ElkununCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		707F3A906CDA78FB3AFAD0D6 /* PixelArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC76E9269E32FF06D4619E8 /* PixelArt.swift */; };
 		754EE40264464B470DB893DE /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DF1AF73B4996485455A2A6 /* Preferences.swift */; };
 		77F79CFCA5103625040A0B69 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0530C06C4141CDCAA337DE63 /* GameView.swift */; };
 		799C5875BBF89D9EA50570F7 /* ElkununCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9E5D739CE10BC12CDF062DAA /* ElkununCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -109,6 +111,7 @@
 		2AC349AF03982F2DCFF7DB5C /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		2D91B46BD2005581C0027A05 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3110C049E510D960FE536077 /* ElkununApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElkununApp.swift; sourceTree = "<group>"; };
+		3CC76E9269E32FF06D4619E8 /* PixelArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelArt.swift; sourceTree = "<group>"; };
 		4432CB7F90BC6C0270F79358 /* Elkunun.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Elkunun.entitlements; sourceTree = "<group>"; };
 		452F6D534C29CAF73196FE6D /* CampaignLevels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignLevels.swift; sourceTree = "<group>"; };
 		45D833D10B31539C15EE1560 /* CampaignProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignProgress.swift; sourceTree = "<group>"; };
@@ -122,6 +125,7 @@
 		65A5648D320FA3B846FA50FA /* GeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorTests.swift; sourceTree = "<group>"; };
 		65DF1AF73B4996485455A2A6 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		6E0D414B4DF6D174AD604649 /* Elkunun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Elkunun.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FA2ABB38F12B4DAE3B45044 /* PublicPixel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PublicPixel.ttf; sourceTree = "<group>"; };
 		72FACF66439B6C87193AA846 /* SoundSynth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundSynth.swift; sourceTree = "<group>"; };
 		732D640C37F446F3E6636307 /* GameCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCommands.swift; sourceTree = "<group>"; };
 		9278ECC842A4C05022816478 /* TileArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileArt.swift; sourceTree = "<group>"; };
@@ -198,6 +202,22 @@
 			path = ElkununCore;
 			sourceTree = "<group>";
 		};
+		6C14E63AD7330C124068B8AB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6FA2ABB38F12B4DAE3B45044 /* PublicPixel.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B72B9B14B7B17F6624F30789 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6C14E63AD7330C124068B8AB /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		D0553B031644EDA84B782BD7 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,11 +270,13 @@
 				F2656A2E4B9664273F7740EB /* MenuViews.swift */,
 				5272E7AE9C88958943CAE4A5 /* MusicComposer.swift */,
 				0C1B163AAF1D446B066E9463 /* Palette.swift */,
+				3CC76E9269E32FF06D4619E8 /* PixelArt.swift */,
 				65DF1AF73B4996485455A2A6 /* Preferences.swift */,
 				F6999BFD2B5FA991B2C255D4 /* SettingsView.swift */,
 				72FACF66439B6C87193AA846 /* SoundSynth.swift */,
 				199C8235DB6B0E36EECB2E95 /* Theme.swift */,
 				9278ECC842A4C05022816478 /* TileArt.swift */,
+				B72B9B14B7B17F6624F30789 /* Resources */,
 			);
 			path = Elkunun;
 			sourceTree = "<group>";
@@ -381,6 +403,7 @@
 			files = (
 				9777017D2A881E0ACD3F53CF /* Assets.xcassets in Resources */,
 				DC3A5A7ADD40C6F1EDE3E0B8 /* Localizable.xcstrings in Resources */,
+				21596FFE019F47E07DFB2FC8 /* PublicPixel.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +426,7 @@
 				44196F8893F0B51835118F0D /* MenuViews.swift in Sources */,
 				5E166F99D510D97B7B426EBE /* MusicComposer.swift in Sources */,
 				AB7095542885F1F03345822C /* Palette.swift in Sources */,
+				707F3A906CDA78FB3AFAD0D6 /* PixelArt.swift in Sources */,
 				754EE40264464B470DB893DE /* Preferences.swift in Sources */,
 				025580B49CCA7405FC3A8867 /* SettingsView.swift in Sources */,
 				ACD1B64E21F990D7DC1A554C /* SoundSynth.swift in Sources */,

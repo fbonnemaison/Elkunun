@@ -51,7 +51,7 @@ El proyecto se genera con [XcodeGen](https://github.com/yonaskolb/XcodeGen) a pa
 xcodegen generate
 ```
 
-Para regenerar el icono (se dibuja con código, sin imágenes externas):
+Para regenerar los tamaños del icono a partir del original en pixel art (`Design/AppIcon-source.png`):
 
 ```bash
 Scripts/generate-icon.sh

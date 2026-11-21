@@ -8,7 +8,19 @@ Elkünun © 2026 App-Zilla. Todo el código está bajo la [licencia MIT](LICENSE
 
 ## Gráficos
 
-Todos los gráficos (casillas, zorro culpeo, bordes, iconos del tablero) se dibujan con código en `Sources/Elkunun/TileArt.swift` y `Sources/Elkunun/FoxArt.swift`. Son originales de App-Zilla, bajo licencia MIT. Los colores y formas se inspiran con respeto en los textiles mapuches, sin reproducir símbolos ceremoniales.
+Todos los gráficos (casillas, zorro culpeo, araucarias, bordes, iconos del tablero) son pixel art de 16×16 descrito con código en `Sources/Elkunun/TileArt.swift` y `Sources/Elkunun/FoxArt.swift`. Son originales de App-Zilla, bajo licencia MIT. Los colores y formas se inspiran con respeto en los textiles mapuches, sin reproducir símbolos ceremoniales.
+
+## Icono
+
+Zorro culpeo en pixel art junto a una caja guardada, frente a un bosque (`Design/AppIcon-source.png`), aportado por App-Zilla.
+
+## Fuente
+
+| Recurso | Autor | Licencia | Uso en Elkünun |
+|---|---|---|---|
+| [Public Pixel Font](https://opengameart.org/content/public-pixel-font) (v1.24) | GGBotNet | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Títulos y botones (`Sources/Elkunun/Resources/Fonts/PublicPixel.ttf`) |
+
+La licencia original está en [Licenses/](Licenses). CC0 no obliga a dar crédito, pero lo damos con gusto.
 
 ## Audio
 

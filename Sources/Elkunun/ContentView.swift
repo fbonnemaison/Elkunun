@@ -59,8 +59,10 @@ struct FoxImage: View {
     @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
-        let texture = FoxArt.texture(view, theme: .current(colorScheme, highContrast: false), pixels: Int(size * 2))
-        Image(decorative: texture.cgImage(), scale: 2)
+        Image(decorative: FoxArt.image(view, theme: .current(colorScheme, highContrast: false)), scale: 1)
+            .interpolation(.none)
+            .resizable()
+            .frame(width: size, height: size)
             .accessibilityHidden(true)
     }
 }
@@ -72,7 +74,7 @@ struct MenuButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.title3.weight(.semibold))
+            .font(.pixel(16))
             .frame(minWidth: 240)
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
@@ -95,7 +97,7 @@ struct ScreenHeader: View {
             }
             .keyboardShortcut(.cancelAction)
             Spacer()
-            Text(title).font(.title2.weight(.bold))
+            Text(title).font(.pixel(20))
             Spacer()
             Label("Volver", systemImage: "chevron.left").hidden()
         }

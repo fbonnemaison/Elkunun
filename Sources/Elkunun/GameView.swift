@@ -85,7 +85,7 @@ struct GameView: View {
         HStack(alignment: .center, spacing: 12) {
             VStack(alignment: .leading, spacing: 2) {
                 Text(game.title)
-                    .font(.title2.weight(.bold))
+                    .font(.pixel(16))
                     .monospacedDigit()
                 if let code = game.levelCode {
                     Button { game.copyCode() } label: {
@@ -216,7 +216,7 @@ private struct PauseOverlay: View {
 
     var body: some View {
         OverlayCard {
-            Text("Pausa").font(.title.weight(.bold))
+            Text("Pausa").font(.pixel(24))
             Button("Continuar") { game.togglePause() }
                 .buttonStyle(MenuButtonStyle(prominent: true))
                 .keyboardShortcut(.defaultAction)
@@ -233,8 +233,8 @@ private struct VictoryOverlay: View {
 
     var body: some View {
         OverlayCard {
-            FoxImage(size: 72)
-            Text("¡Nivel completado!").font(.title.weight(.bold))
+            FoxImage(size: 80)
+            Text("¡Nivel completado!").font(.pixel(24))
             VStack(spacing: 4) {
                 Text("Movimientos: \(game.moves)")
                 Text("Empujes: \(game.pushes) · mínimo \(game.optimalPushes)")

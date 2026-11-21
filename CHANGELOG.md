@@ -2,6 +2,13 @@
 
 Todos los cambios importantes de Elkünun. Autor: App-Zilla.
 
+## [Sin publicar]
+
+### Cambiado
+- Nuevo estilo pixel art: casillas, cajas, araucarias y el zorro culpeo, nítidos a cualquier tamaño de ventana y en todos los temas.
+- Fuente pixel Public Pixel (CC0) en títulos y botones.
+- Nuevo icono en pixel art.
+
 ## [1.0.0] — 2026-11-18
 
 Primera versión.

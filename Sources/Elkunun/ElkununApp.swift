@@ -15,6 +15,7 @@ struct ElkununApp: App {
 
     init() {
         Preferences.registerDefaults()
+        PixelFont.register()
     }
 
     var body: some Scene {

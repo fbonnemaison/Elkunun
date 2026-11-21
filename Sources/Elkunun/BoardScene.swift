@@ -42,7 +42,6 @@ final class BoardScene: SKScene {
     /// Casillas dentro de la habitación (alcanzables desde el jugador sin atravesar muros).
     private var interior: Set<Position> = []
     private var tileSize: CGFloat = 48
-    private var pixelSize = 0
     private var textures: [TileArt.Kind: SKTexture] = [:]
     private var foxTextures: [String: SKTexture] = [:]
     /// Cola del zorro: nodo hijo que gira desde su base para menearse.
@@ -97,7 +96,6 @@ final class BoardScene: SKScene {
         theme = newTheme
         textures = [:]
         foxTextures = [:]
-        pixelSize = 0
         rebuild()
     }
 
@@ -260,6 +258,7 @@ final class BoardScene: SKScene {
         ring.strokeColor = NSColor(cgColor: theme.goal) ?? .systemBlue
         ring.lineWidth = max(2, tileSize * 0.07)
         ring.fillColor = .clear
+        ring.isAntialiased = false
         ring.position = center
         ring.zPosition = 20
         hintLayer.addChild(ring)
@@ -268,6 +267,7 @@ final class BoardScene: SKScene {
         arrow.fillColor = NSColor(cgColor: theme.goal) ?? .systemBlue
         arrow.strokeColor = NSColor(cgColor: theme.floor) ?? .white
         arrow.lineWidth = max(1, tileSize * 0.03)
+        arrow.isAntialiased = false
         arrow.position = CGPoint(x: center.x + CGFloat(direction.dx) * tileSize * 0.75,
                                  y: center.y - CGFloat(direction.dy) * tileSize * 0.75)
         arrow.zRotation = switch direction {
@@ -331,15 +331,16 @@ final class BoardScene: SKScene {
         let board = game.board
         let margin: CGFloat = 0.92
         let fit = min(size.width / CGFloat(board.width), size.height / CGFloat(board.height)) * margin
-        tileSize = max(8, floor(min(fit, Self.maxTileSize)))
         let scale = view?.window?.backingScaleFactor ?? NSScreen.main?.backingScaleFactor ?? 2
-        // Redondeo a múltiplos de 16 px para no regenerar texturas en cada pequeño cambio de tamaño.
-        let pixels = max(32, Int((tileSize * scale / 16).rounded(.up)) * 16)
-        if pixels != pixelSize {
-            pixelSize = pixels
-            textures = [:]
-            foxTextures = [:]
-        }
+        // Pixel art de 16×16: la casilla mide un múltiplo de 16 píxeles de pantalla, para que
+        // cada píxel del dibujo ocupe un número entero de píxeles y se vea nítido.
+        let step = 16 / scale
+        tileSize = max(step, floor(min(fit, Self.maxTileSize) / step) * step)
+        // Alinea el borde del tablero con la rejilla de píxeles de la pantalla.
+        let left = size.width / 2 - CGFloat(board.width) * tileSize / 2
+        let bottom = size.height / 2 - CGFloat(board.height) * tileSize / 2
+        boardNode.position = CGPoint(x: (left * scale).rounded() / scale - left,
+                                     y: (bottom * scale).rounded() / scale - bottom)
 
         tileLayer.removeAllChildren()
         pieceLayer.removeAllChildren()
@@ -371,7 +372,7 @@ final class BoardScene: SKScene {
 
         fox.removeAllActions()
         fox.removeFromParent()
-        fox.size = CGSize(width: tileSize * 1.08, height: tileSize * 1.08)
+        fox.size = CGSize(width: tileSize, height: tileSize)
         foxTailView = nil
         setFoxView(facing)
         fox.xScale = facing == .left ? -1 : 1
@@ -403,13 +404,14 @@ final class BoardScene: SKScene {
                 case 4..<6: .araucariaTall
                 default: .araucariaYoung
                 }
-                let scale = 0.85 + CGFloat(rng.int(below: 30)) / 100
                 let tree = SKSpriteNode(texture: texture(kind))
-                tree.size = CGSize(width: tileSize * scale, height: tileSize * scale)
-                tree.anchorPoint = CGPoint(x: 0.5, y: 0.04)
+                tree.size = CGSize(width: tileSize, height: tileSize)
+                tree.anchorPoint = CGPoint(x: 0.5, y: 0)
+                // Desplazamiento de unos píxeles del dibujo, sin romper la rejilla.
+                let pixel = tileSize / CGFloat(PixelArt.side)
                 let center = point(p)
-                tree.position = CGPoint(x: center.x + CGFloat(rng.int(below: 21) - 10) / 100 * tileSize,
-                                        y: center.y - tileSize * 0.46)
+                tree.position = CGPoint(x: center.x + CGFloat(rng.int(below: 5) - 2) * pixel,
+                                        y: center.y - tileSize / 2)
                 // Solo árboles que caben enteros en la vista (sin tocones cortados en los bordes).
                 let halfW = tree.size.width / 2
                 guard tree.position.y >= -size.height / 2 + 2,
@@ -420,14 +422,6 @@ final class BoardScene: SKScene {
                 // Los de más abajo en pantalla quedan delante.
                 tree.zPosition = CGFloat(y) * 0.001
                 treeLayer.addChild(tree)
-                if !reduceMotion {
-                    let angle = 0.02 + CGFloat(rng.int(below: 15)) / 1000
-                    let period = 2.2 + Double(rng.int(below: 20)) / 10
-                    let sway = SKAction.sequence([.rotate(toAngle: angle, duration: period),
-                                                  .rotate(toAngle: -angle, duration: period)])
-                    sway.timingMode = .easeInEaseOut
-                    tree.run(.repeatForever(sway))
-                }
             }
         }
     }
@@ -444,8 +438,7 @@ final class BoardScene: SKScene {
 
     private func addTile(_ kind: TileArt.Kind, at p: Position, z: CGFloat) {
         let node = SKSpriteNode(texture: texture(kind))
-        // Un poco más grande para evitar costuras entre casillas al escalar.
-        node.size = CGSize(width: tileSize + 0.5, height: tileSize + 0.5)
+        node.size = CGSize(width: tileSize, height: tileSize)
         node.position = point(p)
         node.zPosition = z
         tileLayer.addChild(node)
@@ -469,7 +462,7 @@ final class BoardScene: SKScene {
 
     private func texture(_ kind: TileArt.Kind) -> SKTexture {
         if let t = textures[kind] { return t }
-        let t = TileArt.texture(kind, theme: theme, pixels: pixelSize)
+        let t = TileArt.texture(kind, theme: theme)
         textures[kind] = t
         return t
     }
@@ -477,7 +470,7 @@ final class BoardScene: SKScene {
     private func foxTexture(_ view: FoxArt.View, _ part: FoxArt.Part) -> SKTexture {
         let key = "\(view)-\(part)"
         if let t = foxTextures[key] { return t }
-        let t = FoxArt.texture(view, theme: theme, pixels: pixelSize, part: part)
+        let t = FoxArt.texture(view, theme: theme, part: part)
         foxTextures[key] = t
         return t
     }
@@ -649,13 +642,14 @@ final class BoardScene: SKScene {
         circle.fillColor = NSColor(srgbRed: 0.86, green: 0.12, blue: 0.14, alpha: 1)
         circle.strokeColor = .white
         circle.lineWidth = max(1.5, tileSize * 0.04)
+        circle.isAntialiased = false
         circle.position = CGPoint(x: tileSize * 0.32, y: tileSize * 0.32)
         circle.zPosition = 5
         circle.name = Self.stuckBadgeName
 
         let mark = SKLabelNode(text: "!")
-        mark.fontName = NSFont.systemFont(ofSize: 10, weight: .black).fontName
-        mark.fontSize = radius * 1.55
+        mark.fontName = PixelFont.name
+        mark.fontSize = radius
         mark.fontColor = .white
         mark.verticalAlignmentMode = .center
         mark.horizontalAlignmentMode = .center
@@ -704,6 +698,7 @@ final class BoardScene: SKScene {
             let spark = SKShapeNode(path: TileArt.rhombus(.zero, tileSize * 0.08))
             spark.fillColor = NSColor(cgColor: theme.effect) ?? .red
             spark.strokeColor = .clear
+            spark.isAntialiased = false
             spark.position = center
             spark.zPosition = 10
             effectLayer.addChild(spark)

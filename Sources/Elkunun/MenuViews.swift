@@ -12,9 +12,9 @@ struct MainMenuView: View {
     var body: some View {
         VStack(spacing: 12) {
             Spacer()
-            FoxImage(size: 120)
+            FoxImage(size: 128)
             Text("Elkünun")
-                .font(.system(size: 52, weight: .bold, design: .rounded))
+                .font(.pixel(48))
             Text("Poner cada cosa en su lugar")
                 .font(.title3)
                 .foregroundStyle(.secondary)
@@ -359,8 +359,8 @@ struct CreditsView: View {
                 VStack(spacing: 18) {
                     HelpSection()
                     Divider()
-                    FoxImage(view: .side, size: 110)
-                    Text("Elkünun").font(.largeTitle.weight(.bold))
+                    FoxImage(view: .side, size: 112)
+                    Text("Elkünun").font(.pixel(32))
                     Text("«Elkünun» es un verbo en mapudungun que significa ubicar, poner, colocar, dejar puesto (también se escribe «elkünün»). Es justo lo que hace el protagonista: dejar cada caja en su lugar. Es un zorro culpeo, el zorro colorado de los Andes, que vive desde Ecuador hasta Tierra del Fuego.")
                     Text("Colores y formas inspirados con respeto en los textiles mapuches.")
                     Text("Inspirado en el género de empujar cajas creado por Sokoban (Hiroyuki Imabayashi, 1981). Elkünun es un juego independiente, sin relación con Sokoban ni con sus titulares; sus niveles, gráficos y sonidos son originales.")
@@ -383,7 +383,7 @@ struct CreditsView: View {
 private struct HelpSection: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Cómo se juega").font(.title2.weight(.bold))
+            Text("Cómo se juega").font(.pixel(20))
             Text("Lleva cada caja a un destino marcado con un rombo. Cuando todas están en su sitio, el nivel está completo.")
             Label("Solo puedes empujar las cajas, nunca tirar de ellas.", systemImage: "arrow.right.square")
             Label("Solo puedes empujar una caja a la vez.", systemImage: "square.stack")
