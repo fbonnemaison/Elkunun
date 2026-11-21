@@ -6,6 +6,12 @@ Juego de rompecabezas 2D y minimalista para macOS. Eres un zorro culpeo que guar
 
 Inspirado en el género de empujar cajas que popularizó Sokoban (Hiroyuki Imabayashi, 1981). Elkünun es un juego independiente: no está afiliado a Sokoban ni a sus titulares, y todos sus niveles, gráficos y sonidos son originales.
 
+![Un nivel de la campaña: el zorro culpeo junto a dos cajas, rodeado de muros con dibujos de textil mapuche y araucarias](Screenshots/03-juego.png)
+
+| Pantalla de inicio | Selección de nivel |
+|---|---|
+| ![Pantalla de inicio con el zorro en pixel art y el título Elkünun](Screenshots/01-inicio.png) | ![Selección de nivel de la campaña, con el zorro eligiendo piso en un ascensor de fondo](Screenshots/02-niveles.png) |
+
 > Versión 1.1.0. Cambios en [CHANGELOG.md](CHANGELOG.md); plan de desarrollo en [TODO.md](TODO.md).
 
 ## Cómo se juega
@@ -78,6 +84,7 @@ Scripts/generate-campaign.sh
 | `Tests/ElkununCoreTests` | Pruebas unitarias del núcleo |
 | `Tools/CampaignGenerator` | Herramienta que genera los niveles de la campaña |
 | `Scripts` | Scripts de desarrollo |
+| `Screenshots` | Capturas del juego para este README |
 
 ## Créditos
 

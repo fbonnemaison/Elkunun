@@ -148,7 +148,8 @@
 - [x] Repositorio **privado** creado en GitHub y versión `v1.0.0` publicada en GitHub Releases con el `.dmg`, el `.zip` y `SHA256SUMS.txt` (18-11-2026); suma del `.dmg` descargado verificada.
 - [x] Versión 1.1.0 (21-11-2026): revisión de la licencia MIT (cabeceras, LICENSE y licencia CC0 de la fuente dentro de `Elkunun.app/Contents/Resources` y junto a la app en el `.dmg` y el `.zip`; historial sin datos personales); publicada en GitHub Releases e instalada en `/Applications`.
 - [x] Repositorio **público** en GitHub desde la versión 1.1.0 (21-11-2026).
-- [ ] Capturas y GIF en el README.
+- [x] Capturas en el README (`Screenshots/`: inicio, selección de nivel y un nivel; 21-11-2026).
+- [ ] GIF en el README.
 
 ## Ideas futuras
 - [ ] Editor de niveles.
